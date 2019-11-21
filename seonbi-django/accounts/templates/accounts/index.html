@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h1>유저 목록</h1>
+<div>
+  <ul>
+      {% for user in users %}
+    <li>
+      <a href="{% url 'accounts:account_user_detail' user.pk %}">{{ user.username }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
