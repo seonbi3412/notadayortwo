@@ -1,7 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'index.css' %}">
+{% endblock %}
+
 {% block body %}
-<h1>영화</h1>
+<span class="cite_name">
+  <h1>일</h1>
+  <h1>이</h1>
+  <h1>관</h1>
+  <h1>지</h1>
+</span>
+<br>
 
 {% for movie in movies %}
   <div class="movie">
