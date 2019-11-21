@@ -1,0 +1,282 @@
+[
+    {
+        "pk": 330457,
+        "model": "movies.movie",
+        "fields": {
+            "title": "겨울왕국 2",
+            "original_title": "Frozen II",
+            "score": "5.6",
+            "poster_url": "/8S2AFd8DF539pxdn7TCIDqXlwRA.jpg",
+            "genres": [12, 16, 35, 10402, 10751],
+            "description": "어느 날 부턴가 의문의 목소리가 엘사를 부르고, 평화로운 아렌델 왕국을 위협한다. 트롤은 모든 것은 과거에서 시작되었음을 알려주며 엘사의 힘의 비밀과 진실을 찾아 떠나야한다고 조언한다. 위험에 빠진 아렌델 왕국을 구해야만 하는 엘사와 안나는 숨겨진 과거의 진실을 찾아 크리스토프, 올라프 그리고 스벤과 함께 위험천만한 놀라운 모험을 떠나게 된다. 자신의 힘을 두려워했던 엘사는 이제 이 모험을 헤쳐나가기에 자신의 힘이 충분하다고 믿어야만 하는데…",
+            "open_date": "2019-11-21",
+            "adult": "False"
+        }
+    },
+    {
+        "pk": 290859,
+        "model": "movies.movie",
+        "fields": {
+            "title": "터미네이터: 다크 페이트",
+            "original_title": "Terminator: Dark Fate",
+            "score": "6.4",
+            "poster_url": "/nIoDNiWWOtCFdJRi89aFI98cdj0.jpg",
+            "genres": [28, 878],
+            "description": "심판의 날 그 후, 뒤바뀐 미래. 새로운 인류의 희망 ‘대니’를 지키기 위해 슈퍼 솔져 ‘그레이스’가 미래에서 찾아오고, ‘대니’를 제거하기 위한 터미네이터 ‘Rev-9’의 추격이 시작된다.  최첨단 기술력으로 무장한 최강의 적 터미네이터 ‘Rev-9’의 무차별적인 공격에 쫓기기 시작하던 ‘그레이스’와 ‘대니’ 앞에 터미네이터 헌터 ‘사라 코너’가 나타나 도움을 준다. 인류의 수호자이자 기계로 강화된 슈퍼 솔져 ‘그레이스’와 ‘사라 코너’는 ‘대니’를 지키기 위해 새로운 조력자를 찾아 나서고, 터미네이터 ‘Rev-9’은 그들의 뒤를 끈질기게 추격하는데...",
+            "open_date": "2019-10-30",
+            "adult": "False"
+        }
+    },
+    {
+        "pk": 423204,
+        "model": "movies.movie",
+        "fields": {
+            "title": "엔젤 해즈 폴른",
+            "original_title": "Angel Has Fallen",
+            "score": "5.8",
+            "poster_url": "/fxMT7ex1n89UJIPWEO8wtLVbFfw.jpg",
+            "genres": [28],
+            "description": "비밀 경호국 최고 요원 ‘배닝’(제라드 버틀러)의 엄호 중 '트럼불' 대통령(모건 프리먼)을 향한 초대형 규모의 드론 테러가 발생한다. 가까스로 대통령을 구하고 유일하게 살아남은 '배닝'은 완벽히 조작된 음모에 의해 대통령 암살사건의 테러범으로 지목되고, 국가 영웅은 한순간에 일급 수배자가 되어 FBI에게 쫓기게 되는데...",
+            "open_date": "2019-11-13",
+            "adult": "False"
+        }
+    },
+    {
+        "pk": 453405,
+        "model": "movies.movie",
+        "fields": {
+            "title": "제미니 맨",
+            "original_title": "Gemini Man",
+            "score": "5.7",
+            "poster_url": "/avT0fOGqsu5ctQVhWv3FvWwzxgV.jpg",
+            "genres": [28, 53],
+            "description": "최강의 요원 헨리(윌 스미스)는 자신과 완벽하게 닮은 의문의 요원(윌 스미스)에게 맹렬한 추격을 당한다. 한편 헨리와 이제 막 동료가 된 대니(메리 엘리자베스 윈스티드), 헨리의 오랜 동료 배런(베네딕트 웡)은 의문의 요원에게 이상한 낌새를 느끼고 정체를 파헤치기 시작하고, 그가 헨리의 DNA를 추출해 탄생한 ‘제미니 프로젝트’ 요원임을 알게 된다. 헨리의 전성기와 너무나 완벽하게 닮은 한 사람을 만나 충격에 빠지는 헨리와 동료들. 그들은 ‘제미니 프로젝트’를 파괴하기 위한 작전을 시작하는데…",
+            "open_date": "2019-10-09",
+            "adult": "False"
+        }
+    },
+    {
+        "pk": 420809,
+        "model": "movies.movie",
+        "fields": {
+            "title": "말레피센트 2",
+            "original_title": "Maleficent: Mistress of Evil",
+            "score": "7.2",
+            "poster_url": "/btpvGjqLBHgRnobKGlzbBD4jzmf.jpg",
+            "genres": [12, 14, 10751],
+            "description": "강력한 어둠의 요정이자 무어스 숲의 수호자 ‘말레피센트’가 딸처럼 돌봐온 ‘오로라’와 필립 왕자의 결혼 약속으로 인간 왕국의 ‘잉그리스 왕비’와 대립하게 되고 이에 요정과 인간의 연합이 깨지면서 벌어지는 거대한 전쟁을 그린 판타지 블록버스터",
+            "open_date": "2019-10-17",
+            "adult": "False"
+        }
+    },
+    {
+        "pk": 501170,
+        "model": "movies.movie",
+        "fields": {
+            "title": "닥터 슬립",
+            "original_title": "Doctor Sleep",
+            "score": "7.2",
+            "poster_url": "/zcXjQEHfwuHrZKzpbrCPGnpPNtk.jpg",
+            "genres": [18, 14, 27],
+            "description": "어린시절 아버지가 남긴 트라우마에서 벗어나지 못한 대니는 자신이 가진 샤이닝 능력으로 죽음을 앞둔 이들을 돕는 닥터 슬립으로 불리며 살고 있다. 우연히 누구보다 강력한 샤이닝 능력을 지닌 12살 소녀 아브라 스톤을 만나게 되면서, 샤이닝 능력자들을 먹고 영원한 생명을 이어나가는 트루 낫이라는 비밀조직과 맞서게 되는데…",
+            "open_date": "2019-11-07",
+            "adult": "False"
+        }
+    },
+    {
+        "pk": 338967,
+        "model": "movies.movie",
+        "fields": {
+            "title": "좀비랜드: 더블 탭",
+            "original_title": "Zombieland: Double Tap",
+            "score": "7.3",
+            "poster_url": "/1ok4v9dbalAS1AQaplFxbFmC9kb.jpg",
+            "genres": [28, 35, 27],
+            "description": "좀비로 세상이 망한지 10년, 자신들만의 재능을 발휘하고 생존 규칙을 지키며 여전히 꿋꿋하게 살아가고 있는 희한한 가족 탤러해시, 콜럼버스, 위치타, 리틀록. 하지만 ‘좀비랜드’에 더욱 진화한 좀비가 나타나고 이들은 새로운 인간 생존자들과 함께 사투를 시작하는데…",
+            "open_date": "2019-11-13",
+            "adult": "False"
+        }
+    },
+    {
+        "pk": 504949,
+        "model": "movies.movie",
+        "fields": {
+            "title": "더 킹: 헨리 5세",
+            "original_title": "The King",
+            "score": "7.2",
+            "poster_url": "/lmDWUkKhCvhBwLTX0I6ZEiirk7x.jpg",
+            "genres": [18, 36, 10752],
+            "description": "잉글랜드 왕의 후계자가 될 생각은 조금도 없는 방탕한 왕자, 할(티모시 샬라메). 그는 왕궁을 등진 채 민중들과 어울려 지내고 있다. 하지만 아버지가 돌아가신 후, 장남인 그는 헨리 5세로 즉위하고, 그동안 그토록 피하고 싶었던 삶을 살 수밖에 없다. 왕궁 내 정치와 혼란, 아버지가 남긴 전쟁을 이끌어가야 하는 젊은 왕. 뿐만 아니라, 그는 가장 친한 친구이자 멘토, 이제는 늙은 알코올중독자가 되어버린 기사 존 폴스타프(조엘 에저턴)를 포함해, 과거의 삶과 관련된 감정들로 괴로워한다.",
+            "open_date": "2019-10-23",
+            "adult": "False"
+        }
+    },
+    {
+        "pk": 398978,
+        "model": "movies.movie",
+        "fields": {
+            "title": "아이리시맨",
+            "original_title": "The Irishman",
+            "score": "8.6",
+            "poster_url": "/Ch4DTlESeylOs7VaTI5YWI2XN9.jpg",
+            "genres": [80],
+            "description": "20세기 미국 정치 이면에 존재했던 악명높은 인물들과 연루된 한 남자의 시선으로 장기 미제 사건의 대명사 ‘지미 호파 실종 사건’을 그려낸다. 지미 호파는 1950-60년대 미국 정계를 좌지우지했던 거대노동조합의 우두머리로 1975년 실종됐지만, 아직까지 그 사건의 실체가 밝혀지지 않았다. 지미 호파 실종 사건은 미국 역사상 가장 유명한 장기 미제 사건 중 하나이다. 영화는 여러 악명높은 범죄조직 및 인사들과 연루돼 지미 호파 실종의 용의자로 지목되었던 프랭크 시런의 시선을 통해, 미국 근대사의 한 페이지를 장식한 지미 호파의 장대한 이야기를 보여준다.",
+            "open_date": "2019-11-20",
+            "adult": "False"
+        }
+    },
+    {
+        "pk": 481084,
+        "model": "movies.movie",
+        "fields": {
+            "title": "아담스 패밀리",
+            "original_title": "The Addams Family",
+            "score": "6.1",
+            "poster_url": "/fykFaD4flUkSHZsWACnjg9Uw6eR.jpg",
+            "genres": [16, 35, 14, 10751],
+            "description": "고메즈와 모티시아는 결혼식 도중에 결혼을 반대하는 사람들에게 쫓겨 달아나다가 우연히 버려진 성을 발견한다. 으스스한 그 곳을 집으로 삼고 딸 웬즈데이와 아들 퍽슬리를 키우며 살아간다. 어느 날, 아담스 가족은 평범한 동네를 방문하게 되고 사람들은 그들의 기괴한 모습과 행동에 기겁하며 달아난다. 웬즈데이가 그 동네의 학교를 다니게 되면서 파커와 친구가 되어 서로 변해 가기 시작한다. 파커의 엄마는 이상하게 달라진 파커의 모습에 아담스 가족을 괴물로 몰아가며 괴롭히기 시작한다.",
+            "open_date": "2019-11-07",
+            "adult": "False"
+        }
+    },
+    {
+        "pk": 522938,
+        "model": "movies.movie",
+        "fields": {
+            "title": "람보: 라스트 워",
+            "original_title": "Rambo: Last Blood",
+            "score": "5.9",
+            "poster_url": "/5f1hwyCxTjOUnrT23n6skqQeUD9.jpg",
+            "genres": [28, 53],
+            "description": "36년간 수많은 전쟁터의 중심에서 치열하게 싸운 '존 람보'. 지옥 같은 전쟁 트라우마에서 벗어나 평화로운 시간을 보내는 것도 잠시, 딸처럼 여겼던 옆집 소녀가 멕시코 카르텔에게 납치된다. ‘람보’는 자신의 전투 본능과 살인 무기를 총동원해 자비 없이 적들을 처단하기 시작하는데...",
+            "open_date": "2019-10-23",
+            "adult": "False"
+        }
+    },
+    {
+        "pk": 508664,
+        "model": "movies.movie",
+        "fields": {
+            "title": "댄저 클로즈 : 롱탄 대전투",
+            "original_title": "Danger Close: The Battle of Long Tan",
+            "score": "6.8",
+            "poster_url": "/gq4zlRJHWsKwudEzkHfpJB8TY9K.jpg",
+            "genres": [10752, 28, 18, 36],
+            "description": "베트남 전쟁이 한창이던 1966년 8월. 호주군은 미군과 남베트남을 도와 공산주의 북베트남을 무찌르려 파병을 결정한다. 남베트남 누이닷으로 파병된 제1 기동 부대는 한밤중에 적의 포격을 받고, 반격을 가하기 위해 포격 원점인 고무 농장 롱탄으로 출격한다. 해리 스미스 소령이 지휘하는 보병 4중대는 롱탄에서 적을 마주치고 전투를 벌이지만 1개 소대 정도라고 예상했던 적의 병력은 생각보다 많다. 부상자는 늘어나고, 탄약은 점점 줄어드는 상황에서 스미스 소령은 결국 힘든 결정을 내리게 되는데...",
+            "open_date": "2019-11-07",
+            "adult": "False"
+        }
+    },
+    {
+        "pk": 604790,
+        "model": "movies.movie",
+        "fields": {
+            "title": "비욘드 라인",
+            "original_title": "Beyond the Line",
+            "score": 9,
+            "poster_url": "/zzydeKYsxXjtkqL4e5wFguHZOKq.jpg",
+            "genres": [10752],
+            "description": "2차 세계대전 종전일에 연합군은 마지막 작전을 개시한다. 독일 전투기의 공격으로 수송기가 추락하고 영국군은 독일군 한가운데 떨어져 포위된다. 미군의 도움으로 생존률 제로의 탈출을 시도하고 마침내 게릴라전이 시작되는데… 최후의 생존 전투을 목격한다!",
+            "open_date": "2019-11-21",
+            "adult": "False"
+        }
+    },
+    {
+        "pk": 482981,
+        "model": "movies.movie",
+        "fields": {
+            "title": "와일드 로즈",
+            "original_title": "Wild Rose",
+            "score": "6.9",
+            "poster_url": "/aForupUjexWH0cFjDAjao8eD4IL.jpg",
+            "genres": [35, 18, 10402],
+            "description": "14살부터 동네 바에서 노래를 부르던 로즈의 꿈은 오직 글래스고를 벗어나 미국 내슈빌의 스타가 되는 것. 하지만 현실은 전자발찌를 찬 전과자에 말썽만 피우는 철없는 딸 그리고 10대 때 낳은 두 아이가 있는 싱글맘이라는 사실. 하지만 로즈의 1호팬을 자처한 고용주 수잔나와 엄마의 도움으로 런던 BBC를 거쳐 드디어 미국 내슈빌 땅을 밟게 되는데…",
+            "open_date": "2019-10-17",
+            "adult": "False"
+        }
+    },
+    {
+        "pk": 376865,
+        "model": "movies.movie",
+        "fields": {
+            "title": "하이 라이프",
+            "original_title": "High Life",
+            "score": "5.6",
+            "poster_url": "/kGFXBf6IBt7YKc0HDO03Lz1Z7i8.jpg",
+            "genres": [18, 9648, 878, 53],
+            "description": "고립된 이 우주선에서는 모든 것이 인공적이며 인간의 욕망 또한 통제된다. 과거의 상처로 인해 아이에게 집착하는 의사는, 탑승객이자 지구에서 버려진 죄수들을 대상으로 인공 수정을 시도하고, 아이가 태어난다. 유일한 생존자로 남은 몬테는 어린 딸을 돌보며 버티어 낸다. 블랙홀의 회전 에너지를 확인하여 인류에 크게 기여하려던 임무는 완수하지 못했다. 소녀로 성장한 딸과 몬테는 더 이상 구조의 희망을 기다릴 수 없다. 두 사람은 블랙홀로의 여정을 시작한다.",
+            "open_date": "2019-10-30",
+            "adult": "False"
+        }
+    },
+    {
+        "pk": 429471,
+        "model": "movies.movie",
+        "fields": {
+            "title": "캡티브 스테이트",
+            "original_title": "Captive State",
+            "score": "5.3",
+            "poster_url": "/wUoCTPnYeOqlWEti4uuRYjmN712.jpg",
+            "genres": [878],
+            "description": "외계 세력이 지구를 침공한 지 10년 후, 모든 시스템을 점령한 그들은 인간에게 버그를 삽입하여 통제한다. 외계 세력에 협력하며 반란군을 색출하던 특수 경찰 ‘윌리엄 멀리건’은 저항 세력의 리더 ‘라파엘’의 동생 ‘가브리엘’을 감시하던 중 외계 정부를 전복시키려는 대규모 반란의 낌새를 알아채 게 되는데…",
+            "open_date": "2019-11-14",
+            "adult": "False"
+        }
+    },
+    {
+        "pk": 596755,
+        "model": "movies.movie",
+        "fields": {
+            "title": "아빠는 예쁘다",
+            "original_title": "아빠는 예쁘다",
+            "score": 0,
+            "poster_url": "/oNLN7evWh17L0yWeBmsDfWmms4C.jpg",
+            "genres": [],
+            "description": "집에선 투명인간, 회사에선 동네북 신세 만년과장 ‘덕재’는 영업실적을 위해 모두가 기피하는 ‘하와이 클럽’을 찾게 되고, 그곳에서 여자보다 더 예쁜 매니저 ‘승준’을 만난다. 별난 조건부 계약을 내건 ‘승준’ 때문에 ‘덕재’는 ‘하와이 클럽’으로 매일 출근하게 되고, 가족들은 모르는 수상한 비밀이 생기기 시작하는데…",
+            "open_date": "2019-11-21",
+            "adult": "False"
+        }
+    },
+    {
+        "pk": 554509,
+        "model": "movies.movie",
+        "fields": {
+            "title": "얼굴없는 보스",
+            "original_title": "얼굴없는 보스",
+            "score": 0,
+            "poster_url": "/2rW0sgfExI63A3CEXMZ1hXlmyxC.jpg",
+            "genres": [28, 80],
+            "description": "건달이 되면 멋진 남자로서 폼 나는 삶을 살 수 있을 거란 일념으로, 배신한 선배를 물러나게 하고 마침내 보스의 자리까지 오른 ‘상곤’. 하지만 그 일로 선배를 제낀 후배라는 오명을 쓰게 된다. 형제보다 사랑하는 동생들과 의리를 맹세하고 목숨보다 사랑하는 그녀와 행복까지 꿈꾸지만 매일매일 피바람이 불어대는 지옥과 같은 이 곳에는 건달들의 낭만 따위는 사치처럼 보이는데… 건달들이 개입된 음모와 얽히고설킨 배신 속, 가족과 동생들까지 점점 더 모든 것을 잃을 위기에 처하는 ‘상곤’. 그가 마지막까지 지키고자 했던 것은 무엇이었을까?",
+            "open_date": "2019-11-21",
+            "adult": "False"
+        }
+    },
+    {
+        "pk": 235,
+        "model": "movies.movie",
+        "fields": {
+            "title": "스탠 바이 미",
+            "original_title": "Stand by Me",
+            "score": "7.9",
+            "poster_url": "/gLYbrbNQrw08CYPyCQxAKTmtRvM.jpg",
+            "genres": [80, 18],
+            "description": "오레곤주의 작은 마을 캐슬록. 섬세한 성격으로 문학에 소질이 있는 고디, 알콜 중독인 아버지 밑에서 갑갑한 생활을 하지만 타고난 리더쉽으로 동네 꼬마들을 지휘하는 크리스, 2차대전의 영웅이었던 아버지를 존경하는 열정의 소년 테디, 착한 꼬마 뚱보 번은 이 마을에서 사는 단짝 친구들이다. 어느 날 번은 패거리들에게 며칠 전 행방불명된 소년의 시체가 저멀리 숲속에 있다는 소식을 전해준다. 만약 시체를 찾아낸다면 마을의 영웅이 되는 것. 네 명의 소년은 호기심과 모험심을 억누르지 못하고 숲을 향해 여행을 떠난다.",
+            "open_date": "2019-10-24",
+            "adult": "False"
+        }
+    },
+    {
+        "pk": 517839,
+        "model": "movies.movie",
+        "fields": {
+            "title": "경계선",
+            "original_title": "Gräns",
+            "score": "6.7",
+            "poster_url": "/nvj2L8Xp9YExo7Oji4XbP4mIaf9.jpg",
+            "genres": [53, 14, 10749, 18],
+            "description": "출입국 세관 직원인 ‘티나’는 후각으로 감정을 읽을 수 있는 기묘한 능력과 남들과는 조금 다른 외모로 세상과 쉽게 어울리지 못한다. 그러던 어느 날 그녀 앞에 수상한 짐을 가득 든 남자 ‘보레’가 나타나고, 그는 ‘티나’ 자신도 몰랐던 그녀의 특별한 모습을 일깨워주기 시작하는데…",
+            "open_date": "2019-10-24",
+            "adult": "False"
+        }
+    }
+]
