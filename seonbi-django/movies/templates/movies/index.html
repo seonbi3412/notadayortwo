@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h1>영화</h1>
+{% for movie in movies %}
+  <img src="https://image.tmdb.org/t/p/w400{{ movie.poster_url }}" alt="">
+  <h3>{{ movie.title }}</h3>
+
+{% empty %}
+  <p>영화가 없습니다..T^T</p>
+{% endfor %}
+{% endblock %}
