@@ -1,6 +1,6 @@
 <template>
   <div class="movielistitem">
-    <p>{{ movie.title }}</p>
+    <router-link :to="{ name: 'detail', params: {'movie': movie} }">{{ movie.title }}</router-link>
   </div>
 </template>
 
@@ -13,7 +13,7 @@ export default {
       type: Object,
       required: true
     }
-  }
+  },
 }
 </script>
 

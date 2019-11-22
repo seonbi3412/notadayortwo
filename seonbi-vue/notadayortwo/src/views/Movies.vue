@@ -10,6 +10,7 @@
     </div>
     <h1>This is a movies page</h1>
     <movie-list :movies="movies"/>
+    <router-view />
   </div>
 </template>
 
