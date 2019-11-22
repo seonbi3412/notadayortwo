@@ -123,3 +123,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'accounts.User'
+
+CORS_ORIGIN_ALLOW_ALL = True # CORS 모두 추가
+CORS_ORIGIN_WHITELIST = [
+    # 추후에 배포시 vue에서만 요청 보낼 수 있도록 정의!!
+]
