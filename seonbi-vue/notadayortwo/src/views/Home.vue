@@ -1,18 +1,34 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <search-bar @input-change-event="onInputChange"/>
+    <movie-list :movies="movies"/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import SearchBar from '@/components/home/SearchBar.vue'
+import MovieList from '@/components/home/MovieList_h.vue'
 
 export default {
   name: 'home',
   components: {
-    HelloWorld
-  }
+    SearchBar,
+    MovieList
+  },
+  data() {
+    return {
+      movies: [],
+    }
+  },
+  methods: {
+    onInputChange(value) {
+      console.log('searchbar -> home')
+      console.log(value)
+    },
+  },
+  mounted() {
+    this.movies =[{title:'조커', id:1}, {title:'말레피센트', id:2}]
+  },
 }
 </script>
