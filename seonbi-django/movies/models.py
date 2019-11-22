@@ -4,6 +4,11 @@ from django.conf import settings
 # Create your models here.
 class Genre(models.Model):
     name = models.CharField(max_length=10)
+    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_genres', blank=True)
+
+class Actor(models.Model):
+    name = models.CharField(max_length=20)
+    like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_actors', blank=True)
 
 class Movie(models.Model):
     genres = models.ManyToManyField(Genre, related_name='movies')
@@ -14,7 +19,7 @@ class Movie(models.Model):
     score = models.FloatField()
     open_date = models.DateField()
     watchgrade = models.CharField(max_length=15, blank=True)
-    adult = models.BooleanField()
+    actors = models.ManyToManyField(Actor, related_name='filmography', blank=True)
     like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_movies', blank=True)
 
 
