@@ -31,8 +31,13 @@ export default {
   },
   methods: {
     onInputChange(value) {
+      var router = this.$router
       console.log('searchbar -> home')
       console.log(value)
+      router.push({
+        name: 'movies',
+        params: {movieName:value}
+      })
     },
   },
   mounted() {

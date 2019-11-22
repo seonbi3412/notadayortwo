@@ -11,10 +11,9 @@
     <router-view ></router-view>
     <h1>This is a community page</h1>
     <all :reviews="reviews"/>
-    <select class="form-control" v-model="selectedGenreId">
-    // 선택된 장르의 아이디를 selectedGenreId에 바인딩
+    <!-- <select class="form-control" v-model="selectedGenreId">
       <option v-for="movie in movies" :key="movie.id" :value="movie.id">{{movie.name}}</option>
-    </select>
+    </select> -->
     <selected :reviews="selectedReviews"/>
   </div>
 </template>
@@ -46,7 +45,7 @@ export default {
     }
   },
   mounted() {
-    axios.get(`http://127.0.0.1:8000/review`)
+    axios.get(`http://127.0.0.1:8000/movies/reviews/`)
     .then(response =>{
       console.log(response.data)
       this.reviews = response.data
