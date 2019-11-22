@@ -7,8 +7,8 @@
 
 <script>
 // @ is an alias to /src
-import SearchBar from '@/components/SearchBar.vue'
-import MovieList from '@/components/MovieList.vue'
+import SearchBar from '@/components/home/SearchBar.vue'
+import MovieList from '@/components/home/MovieList_h.vue'
 
 export default {
   name: 'home',
