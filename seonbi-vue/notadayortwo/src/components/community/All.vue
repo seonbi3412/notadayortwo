@@ -1,5 +1,17 @@
 <template>
-  <div class="all">
-    <h1>This is a all page</h1>
+  <div>
+    <h1>
+      all page
+    </h1>
   </div>
 </template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+
+</style>

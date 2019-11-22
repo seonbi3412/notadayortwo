@@ -10,6 +10,7 @@
     </div>
     <h1>This is a {{ movie.title}} page</h1>
     
+    
   </div>
 </template>
 
