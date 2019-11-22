@@ -1,3 +1,11 @@
 span.cite_name > h1, p {
   display: inline;
 }
+
+sub {
+  color: orange;
+}
+
+.title3 {
+  color: pink;
+}
