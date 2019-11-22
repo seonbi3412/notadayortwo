@@ -34,10 +34,10 @@ export default {
     .then(response =>{
       console.log(response.data)
       this.movies = response.data
-      if (this.$route.params){
-      console.log(this.$route.params.movieName)
-      this.movies = this.movies.filter(movie => movie.title === this.$route.params.movieName)
-    }
+      if (this.$route.params.movieName){
+        console.log(this.$route.params.movieName)
+        this.movies = this.movies.filter(movie => movie.title === this.$route.params.movieName)
+      }
     })
     .catch(error => {
       console.log(error)
