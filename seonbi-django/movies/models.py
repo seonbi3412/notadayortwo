@@ -24,9 +24,14 @@ class Movie(models.Model):
     like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_movies', blank=True)
 
 
-class Review(models.Model):
+class RootReview(models.Model):
     content = models.CharField(max_length=150)
     score = models.IntegerField()
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
+class Review(RootReview):
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+
+class Article(RootReview):
+    pass
