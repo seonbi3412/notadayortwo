@@ -32,7 +32,7 @@ export default {
     axios.get(`http://127.0.0.1:8000/movies/`)
     .then(response =>{
       console.log(response.data)
-      // this.movies = response.data
+      this.movies = response.data
     })
     .catch(error => {
       console.log(error)

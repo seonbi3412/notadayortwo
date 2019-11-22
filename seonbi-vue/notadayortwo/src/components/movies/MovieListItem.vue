@@ -1,5 +1,22 @@
 <template>
   <div class="movielistitem">
-    <h1>This is a movielistitem page</h1>
+    <p>{{ movie.title }}</p>
   </div>
 </template>
+
+<script>
+
+export default {
+  name: "movieListItem",
+  props: {
+    movie: {
+      type: Object,
+      required: true
+    }
+  }
+}
+</script>
+
+<style>
+
+</style>
