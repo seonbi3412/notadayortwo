@@ -11,6 +11,11 @@ class GenreSerializer(serializers.ModelSerializer):
         model = Genre
         fields = ['id', 'name']
 
+class ReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Review
+        fields = ['id', 'content', 'score', 'user', 'movie']
+
 class MovieSerializer(serializers.ModelSerializer):
     actors = ActorSerializer(many=True)
     genres = GenreSerializer(many=True)
