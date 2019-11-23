@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from .models import Movie, Genre, Actor, Review, Article, RootReview
 
@@ -33,3 +34,9 @@ class MovieSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
         fields = ['id', 'title', 'original_title', 'poster_url', 'actors', 'description', 'score', 'open_date', 'genres']
+
+class UserSerializers(serializers.ModelSerializer):
+    like_movies = MovieSerializer(many=True)
+    class Meta:
+        model = get_user_model()
+        fields = ('id', 'username', 'like_movies')

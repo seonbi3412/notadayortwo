@@ -35,3 +35,10 @@ def article(request):
     if serializers.is_valid(raise_exception=True):
         serializers.save()
         return Response(serializers.data)
+
+@api_view(['GET'])
+def user_detail(request, id):
+    User = get_user_model()
+    user = get_object_or_404(User, pk=id)
+    serializers = UserSerializers(user)
+    return Response(serializers.data)

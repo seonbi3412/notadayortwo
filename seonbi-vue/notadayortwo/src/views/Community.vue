@@ -4,8 +4,13 @@
       <router-link to="/" exact>Home</router-link> |
       <router-link to="/movies">Movies</router-link> |
       <router-link to="/account">Account</router-link> |
-      <router-link to="/account/login">Login</router-link> |
-      <router-link to="/account/signup">Signup</router-link> |
+       <div v-if="!isAuthenticated">
+        <router-link to="/account/login">Login</router-link> |
+        <router-link to="/account/signup">Signup</router-link> |
+      </div>
+      <div v-else>
+        <a @click.prevent="logout" href="#">Logout</a>
+      </div>
       <router-link to="/community">Community</router-link>
     </div>
     <router-view ></router-view>
@@ -23,6 +28,7 @@
 import All from '@/components/community/All.vue'
 import Selected from '@/components/community/Selected.vue'
 import axios from 'axios'
+import router from '../router'
 
 export default {
   name: 'community',
@@ -34,7 +40,24 @@ export default {
     return {
       reviews: {},
       selecte: '',
+      isAuthenticated: this.$session.has('jwt')
     }
+  },
+   methods: {
+     isLogin() {
+      this.$session.start()
+      if (this.$session.has('jwt')) {
+        this.$store.dispatch('login', this.$session.get('jwt'))
+      }
+    },
+    logout() {
+      this.$session.destroy()
+      this.$store.dispatch('logout')
+      router.push('/')
+    }
+  },
+  updated() {
+    this.isAuthenticated = this.$session.has('jwt')
   },
   computed: {
     selectedReview() {
@@ -45,6 +68,7 @@ export default {
     }
   },
   mounted() {
+    this.isLogin()
     axios.get(`http://127.0.0.1:8000/movies/reviews/`)
     .then(response =>{
       console.log(response.data)
