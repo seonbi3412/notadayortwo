@@ -1,8 +1,23 @@
 <template>
   <div id="app">
+    <div v-if="!this.$route.path.includes('account')">
+      <Nav/>
+    </div>
     <router-view/>
   </div>
 </template>
+
+<script>
+// @ is an alias to /src
+import Nav from './views/Nav.vue'
+
+export default {
+  name: 'app',
+  components: {
+    Nav
+  },
+}
+</script>
 
 <style>
 #app {

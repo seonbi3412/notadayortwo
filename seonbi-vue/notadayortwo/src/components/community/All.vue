@@ -12,7 +12,7 @@ export default {
   name: 'all',
   props: {
     reviews:{
-      type: Object,
+      type: Array,
       require: true
     }
   }
