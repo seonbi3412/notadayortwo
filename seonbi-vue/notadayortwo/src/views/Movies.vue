@@ -29,7 +29,7 @@ export default {
     ])
   },
   mounted() {
-    axios.get(`http://127.0.0.1:8000/movies/`, this.options)
+    axios.get(`http://127.0.0.1:8000/movies/`)
     .then(response =>{
       this.movies = response.data
       if (this.$route.params.movieName){

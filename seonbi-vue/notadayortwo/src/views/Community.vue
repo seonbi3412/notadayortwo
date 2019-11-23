@@ -42,7 +42,7 @@ export default {
     ])
   },
   mounted() {
-    axios.get(`http://127.0.0.1:8000/movies/reviews/`, this.options)
+    axios.get(`http://127.0.0.1:8000/movies/reviews/`)
     .then(response =>{
       this.reviews = response.data
     })
