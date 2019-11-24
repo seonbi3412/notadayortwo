@@ -1,23 +1,24 @@
 <template>
-<div>
-    <!-- form에 이벤트 리스너 달아서,
-        1) 사용자 입력값 출력
-        2) /api-token-auth/로 요청 보내서 토큰값 출력 -->
+  <div class="mx-auto" style="width: 400px;">
+    <b-form @submit.prevent="login">
+			<b-form-group id="input-group-1" label="user name :" label-for="input-1">
+        <b-form-input
+          id="input-1"
+          v-model="credentials.username"
+          required
+          placeholder="Enter name"/>
+      </b-form-group>
 
-    <form @submit.prevent="login">
-        <label for="username">user name : </label>
-        <input 
-            v-model="credentials.username"
-            type="text" id="username">
-        <br>
-        <label for="password">password : </label>
-        <input 
-            v-model="credentials.password"
-            type="password" id="password">
-        <br>
-        <button type="submit">로그인</button>
-    </form>
-</div>
+      <b-form-group id="input-group-2" label="Password :" label-for="input-2">
+        <b-form-input
+          id="input-2"
+					type="password"
+          v-model="credentials.password"
+          required />
+      </b-form-group>
+			<b-button type="submit">로그인</b-button>
+    </b-form>
+	</div>
 </template>
 
 <script>
