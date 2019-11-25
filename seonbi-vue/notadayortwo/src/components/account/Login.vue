@@ -1,41 +1,58 @@
 <template>
-  <div class="login">
-    <h1>This is a login page</h1>
-    <LoginForm @login-event="login"/>
-  </div>
+  <div class="mx-auto" style="width: 400px;">
+    <b-form @submit.prevent="login">
+			<b-form-group id="input-group-1" label="user name :" label-for="input-1">
+        <b-form-input
+          id="input-1"
+          v-model="credentials.username"
+          required
+          placeholder="Enter name"/>
+      </b-form-group>
+
+      <b-form-group id="input-group-2" label="Password :" label-for="input-2">
+        <b-form-input
+          id="input-2"
+					type="password"
+          v-model="credentials.password"
+          required />
+      </b-form-group>
+			<b-button type="submit">로그인</b-button>
+    </b-form>
+	</div>
 </template>
 
 <script>
 import axios from 'axios'
-import LoginForm from './LoginForm.vue'
-// 특정 폴더명으로 경로가 끝나게 되면, 폴더 내부의 index.js를 뜻함.
 import router from '../../router'
-
 export default {
   name: "Login",
-  components: {
-    LoginForm
+  data(){
+      return{
+          credentials: {
+          }
+      }
   },
   methods: {
-    login(credentials) {
-      axios.post('http://127.0.0.1:8000/api-token-auth/', credentials)
-      .then(response => {
-        console.log(response)
-        const token = response.data.token
-        this.$session.start()
-        this.$session.set('jwt', token)
-        // vuex actions 호출 -> dispatch
-        this.$store.dispatch('login', token)
-        router.push('/')
-      })
-      .catch(error => {
-        console.log(error)
-      })
+    login() {
+      axios.post('http://127.0.0.1:8000/api-token-auth/', this.credentials)
+        .then(response => {
+          console.log(response)
+          const token = response.data.token
+          this.$session.start()
+          this.$session.set('jwt', token)
+          // vuex actions 호출 -> dispatch
+          this.$store.dispatch('login', token)
+          this.credentials = {}
+          router.push('/')
+        })
+        .catch(error => {
+          console.log(error)
+        })
     }
   }
 }
+
 </script>
 
 <style>
-  
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <search-bar @input-change-event="onInputChange"/>
+    <search-bar :movies="movies" @input-change-event="onInputChange"/>
     <movie-list :movies="movies"/>
   </div>
 </template>
@@ -18,7 +18,12 @@ export default {
   },
   data() {
     return {
-      movies: [],
+    }
+  },
+  props: {
+    movies: {
+      type: Array,
+      required: true
     }
   },
   methods: {
@@ -29,9 +34,6 @@ export default {
         params: {movieName:value}
       })
     },
-  },
-  mounted() {
-    this.movies =[{title:'조커', id:1}, {title:'말레피센트', id:2}]
   },
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="search">
-    <search-bar @input-change-event="onInputChange"/>
+    <search-bar :movies="movies" @input-change-event="onInputChange"/>
     <MovieListItem v-for="movie in searchMovies" :key="movie.id" :movie="movie"/>
   </div>
 </template>
@@ -28,12 +28,12 @@ export default {
   },
   methods: {
     onInputChange(value) {
-      this.searchMovies = this.movies.filter(movie => movie.title === value)
+      this.searchMovies = this.movies.filter(movie => movie.title.includes(value))
     },
   },
   mounted() {
     if (this.$route.params.movieName){
-      this.searchMovies = this.movies.filter(movie => movie.title === this.$route.params.movieName)
+      this.searchMovies = this.movies.filter(movie => movie.title.includes(this.$route.params.movieName))
     }
     else{
       this.searchMovies = this.movies
