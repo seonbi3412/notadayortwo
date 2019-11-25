@@ -30,6 +30,11 @@ export default {
     }
   },
   computed: {
+    myreviews() {
+      return this.reviews.map(review => {
+        return {...review, isUpdate: false}
+      })
+    },
     selectedReview() {
       if (this.selecte === ''){
         return {}
@@ -44,7 +49,9 @@ export default {
   mounted() {
     axios.get(`http://127.0.0.1:8000/movies/reviews/`)
     .then(response =>{
-      this.reviews = response.data
+      this.reviews = response.data.map(data => {
+        return {...data, updated: false}
+      })
     })
     .catch(error => {
       console.log(error)

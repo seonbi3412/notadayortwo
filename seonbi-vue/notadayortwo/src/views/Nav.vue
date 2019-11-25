@@ -1,22 +1,25 @@
 <template>
-  <div id="nav">
-      <router-link to="/" exact>Home</router-link> |
-      <router-link to="/movies">Movies</router-link> |
-      <router-link to="/account">Account</router-link> |
-       <div v-if="!isAuthenticated">
-        <router-link to="/account/login">Login</router-link> |
-        <router-link to="/account/signup">Signup</router-link> |
-      </div>
-      <div v-else>
-        <a @click.prevent="logout" href="#">Logout</a>
-      </div>
-      <router-link to="/community">Community</router-link>
-    </div>
+  <div>
+    <b-navbar type="dark" variant="dark">
+      <b-navbar-brand to="/" exact>Home</b-navbar-brand>
+      <b-navbar-nav>
+        <b-nav-item to="/movies">Movies</b-nav-item>
+        <b-nav-item to="/community">Community</b-nav-item>
+        <b-nav-item v-if="!isAuthenticated" to="/account/login">Login</b-nav-item>
+        <b-nav-item v-if="!isAuthenticated" to="/account/signup">Signup</b-nav-item>
+        <b-nav-item v-if="isAuthenticated" @click.prevent="logout" href="#">Logout</b-nav-item>
+        <b-nav-form v-if="this.$route.name !== 'search'" @submit.prevent="onInputChange">
+          <b-form-input class="mr-sm-2" placeholder="Search"></b-form-input>
+          <b-button variant="secondary" class="my-2 my-sm-0" type="submit">Search</b-button>
+        </b-nav-form>
+      </b-navbar-nav>
+    </b-navbar>
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'nav',
+    name: 'Nav',
     data() {
     return {
       movies: [],
@@ -34,6 +37,14 @@ export default {
       this.$session.destroy()
       this.$store.dispatch('logout')
       this.isAuthenticated = this.$session.has('jwt')
+    },
+    onInputChange(event) {
+      console.log(event.target[0].value)
+      var router = this.$router
+      router.push({
+        name: 'search',
+        params: {movieName:event.target[0].value}
+      })
     },
   },
   mounted() {
