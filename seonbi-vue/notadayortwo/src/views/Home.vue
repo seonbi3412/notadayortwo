@@ -7,7 +7,7 @@
 
 <script>
 // @ is an alias to /src
-import SearchBar from '@/components/home/SearchBar.vue'
+import SearchBar from '@/components/SearchBar.vue'
 import MovieList from '@/components/home/MovieList_h.vue'
 
 export default {
@@ -25,7 +25,7 @@ export default {
     onInputChange(value) {
       var router = this.$router
       router.push({
-        name: 'movies',
+        name: 'search',
         params: {movieName:value}
       })
     },
