@@ -37,6 +37,7 @@ const getters = {
     if (state.token) {
       return jwtDecode(state.token).user_id
     }
+    return false
   }
 }
 

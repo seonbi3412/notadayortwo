@@ -3,7 +3,7 @@
     <h1>
       모든 글 목록
     </h1>
-    <form @submit.prevent="createReview" v-if="this.user">
+    <form @submit.prevent="createReview" v-if="user">
       <input type="text" v-model="content">
       <input type="number" v-model="score">
       <button type="submit">등록</button>
@@ -20,8 +20,8 @@
           <span v-else>
           <p>없고</p>
           </span>
-          <button @click="editOn(review)">수정</button>
-          <button @click="deleteReview(review)">삭제</button>
+          <button @click="editOn(review)" v-if="user === review.user">수정</button>
+          <button @click="deleteReview(review)" v-if="user === review.user">삭제</button>
         </span>
         <form v-else>
           <input type="number" v-model="review.score">
