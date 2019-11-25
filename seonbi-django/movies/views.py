@@ -21,7 +21,7 @@ def detail(request, movie_pk):
     return Response(serializers.data)
 
 @api_view(['GET', 'POST'])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticatedOrReadOnly])
 def review(request):
     if request.method == 'GET':
         reviews = RootReview.objects.all()
@@ -34,7 +34,7 @@ def review(request):
     return Response(serializers.data)
 
 @api_view(['POST'])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticatedOrReadOnly])
 def article(request):
     serializers = ArticleSerializer(data=request.data)
     if serializers.is_valid(raise_exception=True):
@@ -42,7 +42,7 @@ def article(request):
         return Response(serializers.data)
 
 @api_view(['PUT', 'DELETE'])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticatedOrReadOnly])
 def update_delete(request, review_pk):
     review = get_object_or_404(RootReview, pk=review_pk)
     if request.method == 'PUT':
@@ -55,7 +55,7 @@ def update_delete(request, review_pk):
         return Response({'status': 204, 'message': '삭제되었습니다.'})
 
 @api_view(['PUT'])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticatedOrReadOnly])
 def update(request, review_pk):
     review = get_object_or_404(RootReview, pk=review_pk)
     serializer = ArticleSerializer(data=request.data, instance=review)

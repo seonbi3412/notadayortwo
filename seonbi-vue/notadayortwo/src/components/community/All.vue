@@ -3,7 +3,7 @@
     <h1>
       모든 글 목록
     </h1>
-    <form @submit.prevent="createReview">
+    <form @submit.prevent="createReview" v-if="this.user">
       <input type="text" v-model="content">
       <input type="number" v-model="score">
       <button type="submit">등록</button>
@@ -37,6 +37,8 @@
 
 <script>
 import axios from 'axios'
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'all',
   data() {
@@ -51,14 +53,20 @@ export default {
       require: true
     }
   },
+  computed: {
+    ...mapGetters([
+      'options',
+      'user'
+    ])
+  },
   methods: {
     createReview() {
-      const options = {
+      const data = {
         'content': this.content,
         'score': this.score,
-        'user': 1
+        'user': this.user
       }
-      axios.post(`http://127.0.0.1:8000/movies/articles/`, options)
+      axios.post(`http://127.0.0.1:8000/movies/articles/`, data, this.options)
         .then(response => {
           console.log(response)
           this.reviews.push(response.data)
@@ -68,7 +76,7 @@ export default {
         })
     },
     deleteReview(review) {
-      axios.delete(`http://127.0.0.1:8000/movies/reviews/${review.id}/`)
+      axios.delete(`http://127.0.0.1:8000/movies/reviews/${review.id}/`, this.options)
         .then(response => {
           console.log(response)
           const idx = this.reviews.indexOf(review)
@@ -82,19 +90,20 @@ export default {
         })
     },
     editOn(review) {
+      console.log(this)
       const idx = this.reviews.indexOf(review)
       this.$set(this.reviews[idx], 'updated', !review.updated)
     },
     editReview(review) {
-      console.log(review)
-      const options = {
+      
+      const data = {
         'score': review.score,
         'content': review.content,
-        'movie_id': review.movie_id
+        'movie_id': review.movie_id,
+        'user': review.user 
       }
-      console.log(options)
       console.log('Review')
-      axios.put(`http://127.0.0.1:8000/movies/reviews/${review.id}/`, options)
+      axios.put(`http://127.0.0.1:8000/movies/reviews/${review.id}/`, data, this.options)
         .then(response => {
           console.log(response)
         })
@@ -107,13 +116,13 @@ export default {
         })
     },
     editArticle(review) {
-      console.log('Article')
-      const options = {
+      
+      const data = {
         'score': review.score,
-        'content': review.content
+        'content': review.content,
+        'user': review.user
       }
-      console.log(options)
-      axios.put(`http://127.0.0.1:8000/movies/articles/${review.id}/`, options)
+      axios.put(`http://127.0.0.1:8000/movies/articles/${review.id}/`, data, this.options)
         .then(response => {
           console.log(response)
         })
