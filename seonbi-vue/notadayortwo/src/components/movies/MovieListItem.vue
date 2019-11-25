@@ -13,7 +13,7 @@ export default {
   name: "movieListItem",
   data() {
     return {
-      posterUrl: `https://image.tmdb.org/t/p/w500${this.movie.poster_url}`
+      posterUrl: `https://image.tmdb.org/t/p/w400${this.movie.poster_url}`
     }
   },
   props: {
@@ -26,5 +26,4 @@ export default {
 </script>
 
 <style>
-
 </style>
