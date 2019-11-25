@@ -3,7 +3,7 @@
     <div v-if="!this.$route.path.includes('account')">
       <Nav/>
     </div>
-    <router-view :movies="movies"/>
+    <router-view :genres="genres" :movies="movies" />
   </div>
 </template>
 
@@ -21,6 +21,7 @@ export default {
   data() {
     return {
       movies: [],
+      genres: [],
     }
   },
   computed: {
@@ -33,6 +34,14 @@ export default {
     axios.get(`http://127.0.0.1:8000/movies/`)
     .then(response =>{
       this.movies = response.data
+    })
+    .catch(error => {
+      console.log(error)
+    })
+
+    axios.get(`http://127.0.0.1:8000/movies/genres/`)
+    .then(response =>{
+      this.genres = response.data
     })
     .catch(error => {
       console.log(error)

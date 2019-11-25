@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Movie, Review, RootReview, Article
+from .models import Movie, Review, RootReview, Article, Genre
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
-from .serializers import MovieSerializer, ReviewSerializer, ArticleSerializer, RootSerializer, UserSerializers
+from .serializers import MovieSerializer, ReviewSerializer, ArticleSerializer, RootSerializer, UserSerializers, GenreSerializer
 from django.contrib.auth import get_user_model
 
 # Create your views here.
@@ -12,6 +12,13 @@ from django.contrib.auth import get_user_model
 def index(request):
     movies = Movie.objects.all()
     serializers = MovieSerializer(movies, many=True)
+    return Response(serializers.data)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticatedOrReadOnly])
+def genre_index(request):
+    genres = Genre.objects.all()
+    serializers = GenreSerializer(genres, many=True)
     return Response(serializers.data)
 
 @api_view(['GET'])

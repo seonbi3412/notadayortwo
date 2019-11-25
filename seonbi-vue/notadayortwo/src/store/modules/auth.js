@@ -35,7 +35,7 @@ const getters = {
   },
   user(state) {
     if (state.token) {
-      return jwtDecode(state.token).user_id
+      return jwtDecode(state.token)
     }
     return false
   }

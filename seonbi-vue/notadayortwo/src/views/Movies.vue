@@ -1,7 +1,7 @@
 <template>
   <div class="movies">
     <h1>영화 목록</h1>
-    <movie-list :movies="movies"/>
+    <movie-list :movies="movies" :genres="genres"/>
     <router-view />
   </div>
 </template>
@@ -17,6 +17,10 @@ export default {
   },
   props: {
     movies: {
+      type: Array,
+      required: true
+    },
+    genres: {
       type: Array,
       required: true
     }

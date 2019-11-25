@@ -2,7 +2,7 @@
   <div class="search">
     <h1>검색 바</h1>
     <!-- <input  type="text" > -->
-    <b-form-input @change="onInput" v-model="searchInput" list="my-list-id" class="mt-2"></b-form-input>
+    <b-form-input @change="onInput" v-model="searchInput" list="my-list-id" class="mx-auto" style="width: 400px;"></b-form-input>
 
     <datalist id="my-list-id">
       <option>Manual Option</option>

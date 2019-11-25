@@ -4,6 +4,7 @@ from . import views
 app_name = 'movies'
 urlpatterns = [
     path('', views.index, name='index'),
+    path('genres/', views.genre_index, name='genre_index'),
     path('<int:movie_pk>/', views.detail, name='detail'),
     path('reviews/', views.review, name='review'),
     path('articles/', views.article, name='article'),

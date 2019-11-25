@@ -20,8 +20,8 @@
           <span v-else>
           <p>없고</p>
           </span>
-          <button @click="editOn(review)" v-if="user === review.user">수정</button>
-          <button @click="deleteReview(review)" v-if="user === review.user">삭제</button>
+          <button @click="editOn(review)" v-if="user.user_id === review.user">수정</button>
+          <button @click="deleteReview(review)" v-if="user.user_id === review.user">삭제</button>
         </span>
         <form v-else>
           <input type="number" v-model="review.score">
@@ -38,7 +38,6 @@
 <script>
 import axios from 'axios'
 import { mapGetters } from 'vuex'
-
 export default {
   name: 'all',
   data() {
@@ -64,7 +63,7 @@ export default {
       const data = {
         'content': this.content,
         'score': this.score,
-        'user': this.user
+        'user': this.user.user_id
       }
       axios.post(`http://127.0.0.1:8000/movies/articles/`, data, this.options)
         .then(response => {
