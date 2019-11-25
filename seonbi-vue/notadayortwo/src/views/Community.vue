@@ -14,35 +14,34 @@
     <!-- <select class="form-control" v-model="selectedGenreId">
       <option v-for="movie in movies" :key="movie.id" :value="movie.id">{{movie.name}}</option>
     </select> -->
-    <selected :reviews="selectedReviews"/>
+    <!-- <selected :reviews="selectedReviews"/> -->
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import All from '@/components/community/All.vue'
-import Selected from '@/components/community/Selected.vue'
+// import Selected from '@/components/community/Selected.vue'
 import axios from 'axios'
 
 export default {
   name: 'community',
   components: {
     All,
-    Selected
+    // Selected
   },
   data() {
     return {
-      reviews: {},
-      selecte: '',
+      reviews: [],
     }
   },
   computed: {
-    selectedReview() {
-      if (this.selecte === ''){
-        return {}
-      }
-      return this.reviews.filter(review => review.movie_id === this.selecte)
-    }
+    // selectedReview() {
+    //   if (this.selecte === ''){
+    //     return {}
+    //   }
+    //   return this.reviews.filter(review => review.movie_id === this.selecte)
+    // }
   },
   mounted() {
     axios.get(`http://127.0.0.1:8000/movies/reviews/`)
