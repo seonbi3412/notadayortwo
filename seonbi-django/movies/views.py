@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from .serializers import MovieSerializer, ReviewSerializer, ArticleSerializer, RootSerializer, UserSerializers
 from django.contrib.auth import get_user_model
-
+from IPython import embed
 # Create your views here.
 @api_view(['GET'])
 @permission_classes([IsAuthenticatedOrReadOnly])
@@ -46,13 +46,22 @@ def article(request):
 def update_delete(request, review_pk):
     review = get_object_or_404(RootReview, pk=review_pk)
     if request.method == 'PUT':
-        serializer = RootReview(data=request.data, instance=review)
-        if serializer.is_valid(reaise_exception=True):
+        serializer = ReviewSerializer(data=request.data, instance=review)
+        if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data)
     else:
         review.delete()
         return Response({'status': 204, 'message': '삭제되었습니다.'})
+
+@api_view(['PUT'])
+@permission_classes([AllowAny])
+def update(request, review_pk):
+    review = get_object_or_404(RootReview, pk=review_pk)
+    serializer = ArticleSerializer(data=request.data, instance=review)
+    if serializer.is_valid(raise_exception=True):
+        serializer.save()
+        return Response(serializer.data)
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticatedOrReadOnly])
