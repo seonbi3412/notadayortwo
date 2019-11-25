@@ -2,7 +2,7 @@
   <div class="community">
     <router-view ></router-view>
     <h1>This is a community page</h1>
-    <all :reviews="myreviews"/>
+    <all :reviews="reviews"/>
     <!-- <select class="form-control" v-model="selectedGenreId">
       <option v-for="movie in movies" :key="movie.id" :value="movie.id">{{movie.name}}</option>
     </select> -->
@@ -29,11 +29,6 @@ export default {
     }
   },
   computed: {
-    myreviews() {
-      return this.reviews.map(review => {
-        return {...review, isUpdate: false}
-      })
-    },
     // selectedReview() {
     //   if (this.selecte === ''){
     //     return {}
@@ -48,7 +43,9 @@ export default {
   mounted() {
     axios.get(`http://127.0.0.1:8000/movies/reviews/`)
     .then(response =>{
-      this.reviews = response.data
+      this.reviews = response.data.map(data => {
+        return {...data, updated: false}
+      })
     })
     .catch(error => {
       console.log(error)

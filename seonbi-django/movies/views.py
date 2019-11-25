@@ -21,7 +21,7 @@ def detail(request, movie_pk):
     return Response(serializers.data)
 
 @api_view(['GET', 'POST'])
-@permission_classes([IsAuthenticatedOrReadOnly])
+@permission_classes([AllowAny])
 def review(request):
     if request.method == 'GET':
         reviews = RootReview.objects.all()
@@ -34,7 +34,7 @@ def review(request):
     return Response(serializers.data)
 
 @api_view(['POST'])
-@permission_classes([IsAuthenticatedOrReadOnly])
+@permission_classes([AllowAny])
 def article(request):
     serializers = ArticleSerializer(data=request.data)
     if serializers.is_valid(raise_exception=True):
