@@ -1,20 +1,24 @@
 <template>
   <div class="home">
-    <search-bar :movies="movies" @input-change-event="onInputChange"/>
-    <movie-list :movies="movies"/>
+    <search-bar class="my-3" :movies="movies" @input-change-event="onInputChange"/>
+    <!-- <movie-list :movies="movies"/> -->
+
+    <Swiper class="my-5" :movies="movies"/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import SearchBar from '@/components/SearchBar.vue'
-import MovieList from '@/components/home/MovieList_h.vue'
+// import MovieList from '@/components/home/MovieList_h.vue'
+import Swiper from '@/components/Swiper.vue'
 
 export default {
   name: 'home',
   components: {
     SearchBar,
-    MovieList
+    // MovieList,
+    Swiper
   },
   data() {
     return {
@@ -38,5 +42,5 @@ export default {
 }
 </script>
 
-<style lang="">
+<style>
 </style>

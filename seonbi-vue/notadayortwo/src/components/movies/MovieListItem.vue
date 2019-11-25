@@ -2,7 +2,6 @@
   <div class="movielistitem">
     <router-link :to="{ name: 'detail', params: {'movie': movie} }">
       <img :src="posterUrl" alt="">
-      <p>{{ movie.title }}</p>
     </router-link>
   </div>
 </template>
