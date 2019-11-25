@@ -1,9 +1,9 @@
 <template>
   <div id="app" class="bg-light text-dark">
-    <div v-if="!this.$route.path.includes('account')">
+    <div v-if="!this.$route.path.includes('/account/login') && !this.$route.path.includes('/account/signup')">
       <Nav/>
     </div>
-    <router-view :genres="genres" :movies="movies" />
+    <router-view :genres="genres" :movies="movies" :users="users" />
   </div>
 </template>
 
@@ -22,6 +22,7 @@ export default {
     return {
       movies: [],
       genres: [],
+      users: [],
     }
   },
   computed: {
@@ -42,6 +43,14 @@ export default {
     axios.get(`http://127.0.0.1:8000/movies/genres/`)
     .then(response =>{
       this.genres = response.data
+    })
+    .catch(error => {
+      console.log(error)
+    })
+
+    axios.get(`http://127.0.0.1:8000/accounts/`)
+    .then(response =>{
+      this.users = response.data
     })
     .catch(error => {
       console.log(error)

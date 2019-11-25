@@ -21,3 +21,11 @@ def signup(request):
             serializers.save()
             return Response(serializers.data)
     return Response({})
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def index(request):
+    User = get_user_model()
+    users = User.objects.all()
+    serializers = UserSerializers(users, many=True)
+    return Response(serializers.data)

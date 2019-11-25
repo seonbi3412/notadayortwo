@@ -10,9 +10,10 @@
     </form>
     <li v-for="review in reviews" :key="review.id">
       <div>
+        {{review}}
         <span v-if="!review.updated">
           {{ review.score }} | 
-          {{ review.content }} - {{ review.user }} 님
+          {{ review.content }} - {{ review.user.username }} 님
           <span v-if="review.movie_id">
             {{review.movie_id}}
             <p>있고</p>
@@ -49,8 +50,12 @@ export default {
   props: {
     reviews:{
       type: Array,
-      require: true
-    }
+      require: true,
+    },
+    users:{
+      type: Array,
+      required: true
+    },
   },
   computed: {
     ...mapGetters([
