@@ -29,23 +29,6 @@ export default {
     }
   },
   computed: {
-<<<<<<< HEAD
-    myreviews() {
-      return this.reviews.map(review => {
-        return {...review, isUpdate: false}
-      })
-    },
-    selectedReview() {
-      if (this.selecte === ''){
-        return {}
-      }
-      return this.reviews.filter(review => review.movie_id === this.selecte)
-    },
-    ...mapGetters([
-      'options',
-      'user'
-    ])
-=======
     // selectedReview() {
     //   if (this.selecte === ''){
     //     return {}
@@ -56,7 +39,6 @@ export default {
     //   'options',
     //   'user'
     // ])
->>>>>>> seon
   },
   mounted() {
     axios.get(`http://127.0.0.1:8000/movies/reviews/`)
