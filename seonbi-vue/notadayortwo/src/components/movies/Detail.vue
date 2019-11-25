@@ -4,9 +4,13 @@
     <img :src="poster_url" :alt="movie.title">
     <h5>{{ movie.score }} | {{ movie.open_date }}</h5>
     <h5>장르: <span v-for="genre in movie.genres" :key="genre.id">{{ genre.name }} </span></h5>
+<<<<<<< HEAD
     <p>{{ movie.description }}</p> 
     
     
+=======
+    <p>{{ movie.description }}</p>    
+>>>>>>> seon
   </div>
 </template>
 

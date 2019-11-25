@@ -6,30 +6,30 @@
     <!-- <select class="form-control" v-model="selectedGenreId">
       <option v-for="movie in movies" :key="movie.id" :value="movie.id">{{movie.name}}</option>
     </select> -->
-    <selected :reviews="selectedReview"/>
+    <!-- <selected :reviews="selectedReviews"/> -->
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import All from '@/components/community/All.vue'
-import Selected from '@/components/community/Selected.vue'
-import { mapGetters } from 'vuex'
+// import Selected from '@/components/community/Selected.vue'
+// import { mapGetters } from 'vuex'
 import axios from 'axios'
 
 export default {
   name: 'community',
   components: {
     All,
-    Selected
+    // Selected
   },
   data() {
     return {
       reviews: [],
-      selecte: '',
     }
   },
   computed: {
+<<<<<<< HEAD
     myreviews() {
       return this.reviews.map(review => {
         return {...review, isUpdate: false}
@@ -45,6 +45,18 @@ export default {
       'options',
       'user'
     ])
+=======
+    // selectedReview() {
+    //   if (this.selecte === ''){
+    //     return {}
+    //   }
+    //   return this.reviews.filter(review => review.movie_id === this.selecte)
+    // },
+    // ...mapGetters([
+    //   'options',
+    //   'user'
+    // ])
+>>>>>>> seon
   },
   mounted() {
     axios.get(`http://127.0.0.1:8000/movies/reviews/`)
