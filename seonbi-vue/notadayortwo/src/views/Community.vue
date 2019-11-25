@@ -10,7 +10,7 @@
     </div>
     <router-view ></router-view>
     <h1>This is a community page</h1>
-    <all :reviews="reviews"/>
+    <all :reviews="myreviews"/>
     <!-- <select class="form-control" v-model="selectedGenreId">
       <option v-for="movie in movies" :key="movie.id" :value="movie.id">{{movie.name}}</option>
     </select> -->
@@ -36,6 +36,11 @@ export default {
     }
   },
   computed: {
+    myreviews() {
+      return this.reviews.map(review => {
+        return {...review, isUpdate: false}
+      })
+    }
     // selectedReview() {
     //   if (this.selecte === ''){
     //     return {}
