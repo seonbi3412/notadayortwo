@@ -5,8 +5,8 @@
     <h5>{{ movie.score }} | {{ movie.open_date }}</h5>
     <h5>장르: <span v-for="genre in movie.genres" :key="genre.id">{{ genre.name }} </span></h5>
     <p>{{ like_count }}</p>
-    <button @click="likeMovie" v-if="!isLiked">좋아요</button>
-    <button @click="likeMovie" v-else>좋아요 취소</button>
+    <button @click="likeMovie" v-if="!isLiked && this.user">좋아요</button>
+    <button @click="likeMovie" v-else-if="this.user">좋아요 취소</button>
     <p>{{ movie.description }}</p>    
   </div>
 </template>
