@@ -57,7 +57,7 @@ import router from '../../router'
 import axios from 'axios'
 import { mapGetters } from 'vuex'
 export default {
-	name: 'UserForm',
+	name: 'signup',
 	data() {
 		return {
 			form: {
@@ -69,9 +69,13 @@ export default {
 		}
   },
   props:{
+    movies: {
+      type: Array,
+      required: true
+    },
     genres: {
-      type:Array,
-      required:true
+      type: Array,
+      required: true
     },
     users: {
       type:Array,
