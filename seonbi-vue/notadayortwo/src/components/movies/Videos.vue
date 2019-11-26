@@ -24,14 +24,12 @@ export default {
     return {
       swiperOption: {
         // swiper 옵션, 콜백함수 모두 동일하게 사용
+        slidePerView: 1,
         loop: true,
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
         }
-      },
-      pagination: {
-        el: '.swiper-pagination'
       },
     }
   }
