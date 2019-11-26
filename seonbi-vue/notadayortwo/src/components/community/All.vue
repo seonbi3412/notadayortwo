@@ -10,7 +10,6 @@
     </form>
     <li v-for="review in reviews" :key="review.id">
       <div>
-        {{review}}
         <span v-if="!review.updated">
           {{ review.score }} | 
           {{ review.content }} - {{ review.user.username }} 님
@@ -21,8 +20,8 @@
           <span v-else>
           <p>없고</p>
           </span>
-          <button @click="editOn(review)" v-if="user.user_id === review.user">수정</button>
-          <button @click="deleteReview(review)" v-if="user.user_id === review.user">삭제</button>
+          <button @click="editOn(review)" v-if="user.user_id === review.user.id">수정</button>
+          <button @click="deleteReview(review)" v-if="user.user_id === review.user.id">삭제</button>
         </span>
         <form v-else>
           <input type="number" v-model="review.score">
