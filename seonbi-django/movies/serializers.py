@@ -35,8 +35,10 @@ class MovieSerializer(serializers.ModelSerializer):
         model = Movie
         fields = ['id', 'title', 'original_title', 'poster_url', 'actors', 'description', 'score', 'open_date', 'genres']
 
-class UserSerializers(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     like_movies = MovieSerializer(many=True)
+    like_genres = GenreSerializer(many=True)
+    like_actors = ActorSerializer(many=True)
     class Meta:
         model = get_user_model()
-        fields = ('id', 'username', 'like_movies')
+        fields = ('id', 'username', 'like_movies', 'like_genres', 'like_actors')

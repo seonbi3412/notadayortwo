@@ -1,6 +1,24 @@
 <template>
   <div class="account">
     <h1>This is a account page</h1>
-    <router-view />
+    <router-view :genres="genres" :users="users"/>
   </div>
 </template>
+<script>
+export default {
+  props:{
+    genres: {
+      type:Array,
+      required:true
+    },
+    users: {
+      type:Array,
+      required:true
+    }
+  }
+}
+</script>
+
+<style>
+
+</style>

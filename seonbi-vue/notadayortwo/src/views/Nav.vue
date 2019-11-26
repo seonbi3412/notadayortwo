@@ -34,6 +34,16 @@ export default {
       isAuthenticated: this.$session.has('jwt'),
     }
   },
+  props:{
+    genres:{
+      type: Array,
+      required: true
+    },
+    users:{
+      type: Array,
+      required: true
+    },
+  },
   methods: {
     isLogin() {
       this.$session.start()

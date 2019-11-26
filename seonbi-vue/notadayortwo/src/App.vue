@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="bg-light text-dark">
     <div v-if="!this.$route.path.includes('/account/login') && !this.$route.path.includes('/account/signup')">
-      <Nav/>
+      <Nav :genres="genres" :users="users"/>
     </div>
     <router-view :genres="genres" :movies="movies" :users="users" />
   </div>
@@ -48,7 +48,7 @@ export default {
       console.log(error)
     })
 
-    axios.get(`http://127.0.0.1:8000/accounts/`)
+    axios.get(`http://127.0.0.1:8000/movies/users/`)
     .then(response =>{
       this.users = response.data
     })
