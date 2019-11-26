@@ -3,7 +3,7 @@ from .models import Movie, Review, RootReview, Article, Genre
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
-from .serializers import MovieSerializer, ReviewSerializer, ArticleSerializer, RootSerializer, UserSerializer, GenreSerializer
+from .serializers import MovieSerializer, ReviewSerializer, ArticleSerializer, RootSerializer, User2Serializer, GenreSerializer
 from django.contrib.auth import get_user_model
 
 from IPython import embed
@@ -30,29 +30,19 @@ def detail(request, movie_pk):
     serializers = MovieSerializer(movie)
     return Response(serializers.data)
 
-@api_view(['GET', 'POST'])
+@api_view(['POST'])
 @permission_classes([AllowAny])
 def like_movie(request, movie_pk):
     movie = get_object_or_404(Movie, pk=movie_pk)
     user = get_user_model().objects.get(pk=request.data.get('user_id'))
     # embed()
     if request.method == 'POST':
-        is_liked = True
         if user in movie.like_users.all():
             movie.like_users.remove(user)
-            print('삭제')
-            is_liked = False
         else:
             movie.like_users.add(user)
-            print('추가')
-            is_liked = True
-    else:
-        if user in movie.like_user.all():
-            is_liked = True
-        else:
-            is_liked = False
-    like_count = movie.like_users.count()
-    return Response({'is_liked': is_liked, 'like_count': like_count})
+    serializers = MovieSerializer(movie)
+    return Response(serializers.data)
     
 
 @api_view(['GET', 'POST'])
@@ -103,7 +93,7 @@ def update(request, review_pk):
 def user_detail(request, user_pk):
     User = get_user_model()
     user = get_object_or_404(User, pk=user_pk)
-    serializers = UserSerializer(user)
+    serializers = User2Serializer(user)
     return Response(serializers.data)
 
 @api_view(['GET'])
@@ -111,7 +101,7 @@ def user_detail(request, user_pk):
 def user_index(request):
     User = get_user_model()
     users = User.objects.all()
-    serializers = UserSerializer(users, many=True)
+    serializers = User2Serializer(users, many=True)
     return Response(serializers.data)
 
 @api_view(['PUT', 'DELETE'])

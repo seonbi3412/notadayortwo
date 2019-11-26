@@ -1,5 +1,5 @@
 <template>
-  <swiper class="gt" :options="swiperOption" ref="mySwiper" @someSwiperEvent="callback">
+  <swiper class="gt" :options="swiperOption" ref="mySwiper">
     <!-- slides -->
     <swiper-slide v-for="movie in movies" :key="movie.id"><movie-list-item :movie="movie"/></swiper-slide>
     <!-- Optional controls -->

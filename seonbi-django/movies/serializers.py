@@ -2,15 +2,22 @@ from django.contrib.auth import get_user_model
 from rest_framework import serializers
 from .models import Movie, Genre, Actor, Review, Article, RootReview
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = ('id', 'username')
+
 class ActorSerializer(serializers.ModelSerializer):
+    like_users = UserSerializer(many=True)
     class Meta:
         model = Actor
-        fields = ['id', 'name', 'name_en']
+        fields = ['id', 'name', 'name_en', 'like_users']
 
 class GenreSerializer(serializers.ModelSerializer):
+    like_users = UserSerializer(many=True)
     class Meta:
         model = Genre
-        fields = ['id', 'name']
+        fields = ['id', 'name', 'like_users']
 
 class RootSerializer(serializers.ModelSerializer):
     movie_id = serializers.IntegerField(source='review.movie.id')
@@ -31,11 +38,12 @@ class ArticleSerializer(serializers.ModelSerializer):
 class MovieSerializer(serializers.ModelSerializer):
     actors = ActorSerializer(many=True)
     genres = GenreSerializer(many=True)
+    like_users = UserSerializer(many=True)
     class Meta:
         model = Movie
-        fields = ['id', 'title', 'original_title', 'poster_url', 'actors', 'description', 'score', 'open_date', 'genres']
+        fields = ['id', 'title', 'original_title', 'poster_url', 'actors', 'description', 'score', 'open_date', 'genres', 'like_users']
 
-class UserSerializer(serializers.ModelSerializer):
+class User2Serializer(serializers.ModelSerializer):
     like_movies = MovieSerializer(many=True)
     like_genres = GenreSerializer(many=True)
     like_actors = ActorSerializer(many=True)

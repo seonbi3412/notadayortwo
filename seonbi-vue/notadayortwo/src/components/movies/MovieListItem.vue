@@ -1,7 +1,6 @@
 <template>
   <div class="movielistitem">
-    <!-- <router-link :to="{ name: 'detail', params: {'movie': movie} }"> -->
-    <router-link :to="{ name: 'detail', params: {'movie': movie} }">
+    <router-link :to="`/movies/${movie.id}`">
       <img :src="posterUrl" alt="">
     </router-link>
   </div>
