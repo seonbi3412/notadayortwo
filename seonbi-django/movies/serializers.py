@@ -43,6 +43,7 @@ class User2Serializer(serializers.ModelSerializer):
 
 class RootSerializer(serializers.ModelSerializer):
     movie_id = serializers.IntegerField(source='review.movie.id')
+    score = serializers.IntegerField(source='review.score')
     user = UserSerializer()
     class Meta:
         model = RootReview
@@ -56,4 +57,4 @@ class ReviewSerializer(serializers.ModelSerializer):
 class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Article
-        fields = ['id', 'content', 'score', 'user', 'created_at']
+        fields = ['id', 'content', 'user', 'created_at']
