@@ -6,6 +6,8 @@ from rest_framework.response import Response
 from .serializers import MovieSerializer, ReviewSerializer, ArticleSerializer, RootSerializer, UserSerializers, GenreSerializer
 from django.contrib.auth import get_user_model
 
+from IPython import embed
+
 # Create your views here.
 @api_view(['GET'])
 @permission_classes([IsAuthenticatedOrReadOnly])
@@ -22,10 +24,36 @@ def genre_index(request):
     return Response(serializers.data)
 
 @api_view(['GET'])
+@permission_classes([AllowAny])
 def detail(request, movie_pk):
     movie = get_object_or_404(Movie, pk=movie_pk)
     serializers = MovieSerializer(movie)
     return Response(serializers.data)
+
+@api_view(['GET', 'POST'])
+@permission_classes([AllowAny])
+def like_movie(request, movie_pk):
+    movie = get_object_or_404(Movie, pk=movie_pk)
+    user = get_user_model().objects.get(pk=request.data.get('user_id'))
+    # embed()
+    if request.method == 'POST':
+        is_liked = True
+        if user in movie.like_users.all():
+            movie.like_users.remove(user)
+            print('삭제')
+            is_liked = False
+        else:
+            movie.like_users.add(user)
+            print('추가')
+            is_liked = True
+    else:
+        if user in movie.like_user.all():
+            is_liked = True
+        else:
+            is_liked = False
+    like_count = movie.like_users.count()
+    return Response({'is_liked': is_liked, 'like_count': like_count})
+    
 
 @api_view(['GET', 'POST'])
 @permission_classes([AllowAny])

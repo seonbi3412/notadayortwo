@@ -1,5 +1,6 @@
 <template>
   <div class="movielistitem">
+    <!-- <router-link :to="{ name: 'detail', params: {'movie': movie} }"> -->
     <router-link :to="{ name: 'detail', params: {'movie': movie} }">
       <img :src="posterUrl" alt="">
     </router-link>
@@ -12,7 +13,7 @@ export default {
   name: "movieListItem",
   data() {
     return {
-      posterUrl: `https://image.tmdb.org/t/p/w400${this.movie.poster_url}`
+      posterUrl: `https://image.tmdb.org/t/p/w300${this.movie.poster_url}`
     }
   },
   props: {
