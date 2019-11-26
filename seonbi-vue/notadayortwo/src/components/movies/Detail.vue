@@ -19,15 +19,10 @@ export default {
   name: "detail",
   data() {
     return {
-      movieDetail: {},
+      movie: {},
       poster_url: `https://image.tmdb.org/t/p/w500${this.movie.poster_url}`,
       isLiked: false,
       likeUsers: 0,
-    }
-  },
-  props: {
-    movie: {
-      type: Object,
     }
   },
   computed: {
@@ -66,18 +61,13 @@ export default {
     // }
   // },
   beforeMount() {
-    if (this.movie) {
-      this.movieDetail = this.movie
-      console.log('props로!!!')
-    } else {
-      axios.get(`http://127.0.0.1:8000/movies/${this.$route.params.id}/`)
-          .then(response => {
-            console.log(response)
-            this.movieDetail = response.data
-            console.log('axios로!!!')
-          })
-    }
-    console.log(this.movie)
+    console.log()
+    axios.get(`http://127.0.0.1:8000/movies/${this.$route.params.id}/`)
+        .then(response => {
+          console.log(response)
+          this.movie = response.data
+          console.log('axios로!!!')
+        })
   }
 }
 </script>
