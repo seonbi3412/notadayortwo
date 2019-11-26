@@ -1,7 +1,6 @@
 <template>
   <div class="community">
     <router-view ></router-view>
-    <h1>This is a community page</h1>
     <all :reviews="reviews" :users="users"/>
     <!-- <select class="form-control" v-model="selectedGenreId">
       <option v-for="movie in movies" :key="movie.id" :value="movie.id">{{movie.name}}</option>

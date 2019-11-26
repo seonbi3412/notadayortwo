@@ -2,14 +2,7 @@
   <swiper :options="swiperOption" ref="mySwiper">
     <!-- slides -->
     <swiper-slide v-for="video in videos" :key="video.id">
-      <div>
-        <b-embed
-          type="iframe"
-          aspect="16by9"
-          :src="`https://www.youtube.com/embed/${video.key}?rel=0`"
-          allowfullscreen
-        ></b-embed>
-      </div>
+      <iframe width="640" height="360" :src="`https://www.youtube.com/embed/${video.key}?controls=0`" frameborder="0" allow="autoplay;"></iframe>
     </swiper-slide>
     <!-- Optional controls -->
     <div class="swiper-pagination"  slot="pagination"></div>
@@ -31,10 +24,13 @@ export default {
     return {
       swiperOption: {
         // swiper 옵션, 콜백함수 모두 동일하게 사용
+        slidePerView: 1,
+        loop: true,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        }
       },
-      pagination: {
-        el: '.swiper-pagination'
-      }
     }
   }
 }

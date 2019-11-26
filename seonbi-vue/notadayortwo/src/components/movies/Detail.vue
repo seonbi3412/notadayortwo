@@ -1,16 +1,18 @@
 <template>
-  <div class="detail row container d-flex justify-content-center align-items-center">
+  <div class="detail container d-flex justify-content-center align-items-center">
     <div class="col-4">
       <h1>{{ movie.title }}</h1>
       <img :src="poster_url" :alt="movie.title">
     </div>
     <div class="col-8 d-flex flex-column">
-      <videos :videos="videos"/>
+      <videos class="col-12" :videos="videos"/>
       <h5>{{ movie.score }} | {{ movie.open_date }}</h5>
       <h5>장르: <span v-for="genre in movie.genres" :key="genre.id">{{ genre.name }} </span></h5>
       <p>{{ like_count }}</p>
-      <button @click="likeMovie" v-if="!isLiked && this.user">좋아요</button>
-      <button @click="likeMovie" v-else-if="this.user">좋아요 취소</button>
+      <div class="container">
+        <button class="btn btn-secondary" @click="likeMovie" v-if="!isLiked && this.user">좋아요</button>
+        <button class="btn btn-secondary" @click="likeMovie" v-else-if="this.user">좋아요 취소</button>
+      </div>
       <div class="container">
         <p>{{ movie.description }}</p>
       </div>
@@ -49,7 +51,7 @@ export default {
         .then(response => {
           this.movie = response.data
           this.like_count = this.movie.like_users.length
-          this.poster_url=`https://image.tmdb.org/t/p/w500${this.movie.poster_url}`
+          this.poster_url=`https://image.tmdb.org/t/p/w300${this.movie.poster_url}`
           this.isLiked = false
           for(let idx in this.movie.like_users){
             if (this.movie.like_users[idx].id === this.user.user_id){

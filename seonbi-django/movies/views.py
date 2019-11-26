@@ -76,6 +76,7 @@ def review(request):
 @permission_classes([AllowAny])
 def article(request):
     serializers = ArticleSerializer(data=request.data)
+    # embed()
     if serializers.is_valid(raise_exception=True):
         serializers.save()
         return Response(serializers.data)
