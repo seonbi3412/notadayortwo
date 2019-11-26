@@ -5,7 +5,7 @@
       <img :src="poster_url" :alt="movie.title">
     </div>
     <div class="col-8 d-flex flex-column">
-      <videos class="col-12" :videos="videos"/>
+      <videos class="col-12" :pvideos="movie.video"/>
       <h5>{{ movie.score }} | {{ movie.open_date }}</h5>
       <h5>장르: <span v-for="genre in movie.genres" :key="genre.id">{{ genre.name }} </span></h5>
       <p>{{ like_count }}</p>
@@ -33,7 +33,6 @@ export default {
       poster_url: "",
       isLiked: false,
       like_count: 0,
-      videos: []
     }
   },
   components: {
@@ -79,16 +78,6 @@ export default {
             }
           }
         return this.movie
-      })
-      .then(movie => {
-        axios.get(`https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=6b356c5ae179a5d932c01687a436b72e&language=ko-KR`)
-          .then(response => {
-            console.log(response.data.results)
-            this.videos = response.data.results
-          })
-          .catch(error => {
-            console.log(error)
-          })
       })
       .catch(error => {
         console.log(error)
