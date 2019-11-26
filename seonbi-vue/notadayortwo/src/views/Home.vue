@@ -1,9 +1,9 @@
 <template>
-  <div class="home">
+  <div class="home d-flex justify-content-center row">
     <!-- <search-bar class="my-3" :movies="movies" @input-change-event="onInputChange"/> -->
     <!-- <movie-list :movies="movies"/> -->
-    <Boxoffice class="my-5" :boxoffice="boxoffice"/>
-    <RecommendMovies class="my-5" :movies="movies"/>
+    <Boxoffice class="my-5 col-8" :boxoffice="boxoffice"/>  
+    <RecommendMovies class="my-5 col-4" :movies="movies"/>
   </div>
 </template>
 
@@ -64,4 +64,7 @@ export default {
 </script>
 
 <style>
+  div {
+    background-color: rgba(0, 0, 0, 0);
+  }
 </style>
