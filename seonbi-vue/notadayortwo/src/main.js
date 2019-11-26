@@ -13,6 +13,14 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 // require styles
 import 'swiper/dist/css/swiper.css'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faUserSecret, faTrashAlt, faPen } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faUserSecret, faTrashAlt, faPen)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+
 Vue.use(VueAwesomeSwiper, /* { default global options } */)
 Vue.config.productionTip = false
 Vue.use(VueSession)

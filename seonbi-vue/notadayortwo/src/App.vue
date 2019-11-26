@@ -4,6 +4,7 @@
       <Nav :genres="genres" :users="users" :actors="actors" />
     </div>
     <router-view :genres="genres" :movies="movies" :users="users" :actors="actors" />
+    <font-awesome-icon icon="user-secret" />
   </div>
 </template>
 
