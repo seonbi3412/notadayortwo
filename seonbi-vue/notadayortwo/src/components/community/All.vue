@@ -10,10 +10,9 @@
     </form>
     <li v-for="review in reviews" :key="review.id">
       <div>
-        {{review}}
         <span v-if="!review.updated">
           {{ review.score }} | 
-          {{ review.content }} - {{ review.user.username }} 님
+          {{ review.content }} - {{ review.user }} 님
           <span v-if="review.movie_id">
             {{review.movie_id}}
             <p>있고</p>
