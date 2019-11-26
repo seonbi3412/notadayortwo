@@ -46,7 +46,7 @@
       </b-form-group>
 
       <b-button type="submit" variant="primary">Submit</b-button>
-      <b-button type="reset" variant="danger">Reset</b-button>
+      <b-button to="/" variant="danger">취소</b-button>
 
     </b-form>
   </div>
@@ -88,6 +88,11 @@ export default {
   },
 	computed: {
     nameValidation() {
+      for(let idx in this.users){
+        if(this.users[idx].username === this.form.username){
+          return false
+        }
+      }
       const nameReg = /^([0-9a-zA-Z@.+\-_]){2,50}/
       return nameReg.test(this.form.username)
     },
