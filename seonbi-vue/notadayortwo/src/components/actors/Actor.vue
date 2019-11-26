@@ -1,6 +1,6 @@
 <template>
   <div class="actor">
-    
+    {{ actor.name}}
   </div>
 </template>
 
@@ -24,15 +24,15 @@ data() {
     ]),
   },
   methods: {
-    likeMovie() {
-      axios.post(`http://127.0.0.1:8000/movies/${this.movie.id}/like/`, this.user)
+    likeActor() {
+      axios.post(`http://127.0.0.1:8000/movies/${this.actor.id}/like/`, this.user)
         .then(response => {
-          this.movie = response.data
-          this.like_count = this.movie.like_users.length
-          this.poster_url=`https://image.tmdb.org/t/p/w500${this.movie.poster_url}`
+          this.actor = response.data
+          this.like_count = this.actor.like_users.length
+          // this.poster_url=`https://image.tmdb.org/t/p/w500${this.movie.poster_url}`
           this.isLiked = false
-          for(let idx in this.movie.like_users){
-            if (this.movie.like_users[idx].id === this.user.user_id){
+          for(let idx in this.actor.like_users){
+            if (this.actor.like_users[idx].id === this.user.user_id){
               this.isLiked = true
               break
             }
@@ -44,14 +44,14 @@ data() {
     }
   },
   mounted() {
-    axios.get(`http://127.0.0.1:8000/movies/${this.$route.params.id}/`)
+    axios.get(`http://127.0.0.1:8000/movies/actors/${this.$route.params.id}/`)
       .then(response => {
-        this.movie = response.data
-        this.like_count = this.movie.like_users.length
-        this.poster_url=`https://image.tmdb.org/t/p/w500${this.movie.poster_url}`
+        this.actor = response.data
+        this.like_count = this.actor.like_users.length
+        // this.poster_url=`https://image.tmdb.org/t/p/w500${this.movie.poster_url}`
         this.isLiked = false
-          for(let idx in this.movie.like_users){
-            if (this.movie.like_users[idx].id === this.user.user_id){
+          for(let idx in this.actor.like_users){
+            if (this.actor.like_users[idx].id === this.user.user_id){
               this.isLiked = true
               break
             }

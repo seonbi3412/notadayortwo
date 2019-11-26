@@ -37,6 +37,13 @@ def detail(request, movie_pk):
     serializers = MovieSerializer(movie)
     return Response(serializers.data)
 
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def actor_detail(request, actor_pk):
+    actor = get_object_or_404(Actor, pk=actor_pk)
+    serializers = Actor2Serializer(actor)
+    return Response(serializers.data)
+
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def like_movie(request, movie_pk):
