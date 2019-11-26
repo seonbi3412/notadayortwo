@@ -39,3 +39,9 @@ export default {
   },
 }
 </script>
+
+<style>
+  div {
+    font-family: '배달의민족 한나는 열한살';
+  }
+</style>

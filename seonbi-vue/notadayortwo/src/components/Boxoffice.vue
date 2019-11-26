@@ -1,14 +1,14 @@
 <template>
-  <div class="container">
-    <h1 class="display-3">Boxoffice</h1>
+  <div class="container box col-8">
+    <h1 class="display-1 boxoffice">BoxOffice</h1>
     <div>
       <swiper class="swiper-wrapper" :options="swiperOption" ref="mySwiper">
         <!-- slides -->
         <swiper-slide v-for="movie in boxoffice" :key="movie.movieCd">
           <div class="title" data-swiper-parallax="-100">{{ movie.rank }}</div>
-          <img v-if="movie.poster_url !== ''" :src="`https://image.tmdb.org/t/p/w300${movie.poster_url}`" alt="">
+          <div class="poster" data-swiper-parallax="-100"><img v-if="movie.poster_url !== ''" :src="`https://image.tmdb.org/t/p/w300${movie.poster_url}`" alt=""></div>
           <!-- Parallax subtitle -->
-          <div class="subtitle" data-swiper-parallax="-200">{{ movie.movieNm }}</div>
+          <div class="subtitle" data-swiper-parallax="-150"><strong>{{ movie.movieNm }}</strong></div>
           <!-- And parallax text with custom transition duration -->
         </swiper-slide>
         <!-- Optional controls -->
@@ -37,10 +37,11 @@ export default {
         coverflowEffect: {
           rotate: 10,
           stretch: 0,
-          depth: 200,
+          depth: 100,
           modifier: 1,
           slideShadows : false
         },
+        parallax: true,
         autoplay: {
           delay: 5000,
           stopOnLastSlide: false,
@@ -79,11 +80,56 @@ export default {
 </script>
 
 <style scoped>
+  div.container {
+    background-color: rgba(0, 0, 0, 0.438);
+    border-radius: 50px;
+    padding-left: 15px;
+  }
   .swiper-slide {
     background-position: center;
     background-size: cover;
     background-color: rgba(0, 0, 0, 0);
     width: 300px;
     height: 500px;
+  }
+
+  .boxoffice {
+  font-family: 'Deco';
+  text-align: center;
+  font-size: 7em;
+  margin: 20px 0 20px 0;
+  color: rgb(255, 153, 102);
+  }
+
+  .boxoffice:hover {
+    -webkit-animation: boxoffice;
+    -moz-animation: boxoffice;
+    animation: boxoffice;
+  }
+
+  @-webkit-keyframes boxoffice {
+    from {
+
+    }
+    to {
+
+    }
+  }
+  @-moz-keyframes boxoffice {
+    from {
+
+    }
+    to {
+
+    }
+  }
+
+  @keyframes boxoffice {
+    from {
+
+    }
+    to {
+
+    }
   }
 </style>

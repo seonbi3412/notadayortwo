@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <h1 class="display-3">영화 추천</h1>
+  <div class="container rec col-4">
+    <h1 class="display-1 neon">Recommended</h1>
     <swiper ref="mySwiper">
       <swiperSlide :options="swiperOption" ref="mySwiper" v-for="movie in movies" :key="movie.id">
         <movie-list-item :movie="movie"/>
@@ -23,7 +23,7 @@ export default {
       swiperOption: {
         // swiper 옵션, 콜백함수 모두 동일하게 사용
         effect: 'coverflow',
-        slidesPerView: 'auto',
+        slidesPerView: 4,
         spaceBetween: 30,
         autoplay: {
           delay: 5000,
@@ -60,6 +60,24 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+  div.container {
+    background-color: rgba(0, 0, 0, 0.438);
+    border-radius: 50px;
+    padding-left: 15px;
+  }
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0);
+    width: 300px;
+    height: 500px;
+  }
+  .neon {
+    color: rgb(204, 153, 255);
+    font-family: 'Deco';
+    text-align: center;
+    font-size: 7em;
+    margin: 20px 0 20px 0;
+  }
 </style>

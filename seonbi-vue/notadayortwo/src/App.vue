@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="bg-light text-dark">
+  <div id="app" class="text-dark">
     <div v-if="!this.$route.path.includes('/account/login') && !this.$route.path.includes('/account/signup')">
       <Nav :genres="genres" :users="users" :actors="actors" />
     </div>
