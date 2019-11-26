@@ -17,7 +17,7 @@
         <b-nav-item to="/account/signup">Signup</b-nav-item>
         </b-navbar-nav>
       <b-navbar-nav v-else class="col-1">
-        <b-nav-item to="/account/profile">{{this.user.username}}</b-nav-item>
+        <b-nav-item :to="`/account/profile/${this.user.user_id}`">{{this.user.username}}</b-nav-item>
         <b-nav-item to="/" @click.prevent="logout">Logout</b-nav-item>
       </b-navbar-nav>
     </b-navbar>

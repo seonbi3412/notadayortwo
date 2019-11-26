@@ -7,9 +7,13 @@
 <script>
 export default {
   props:{
+    movies: {
+      type: Array,
+      required: true
+    },
     genres: {
-      type:Array,
-      required:true
+      type: Array,
+      required: true
     },
     users: {
       type:Array,

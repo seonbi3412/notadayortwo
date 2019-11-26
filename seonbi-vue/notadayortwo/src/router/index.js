@@ -69,7 +69,7 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../components/account/Edit.vue')
       },
       {
-        path: 'profile',
+        path: 'profile/:id',
         name: 'profile',
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route

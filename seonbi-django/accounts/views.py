@@ -21,3 +21,15 @@ def signup(request):
             serializers.save()
             return Response(serializers.data)
     return Response({})
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticatedOrReadOnly])
+def update(request, user_pk):
+    if request.method == 'POST':
+        User = get_user_model()
+        user = get_object_or_404(User, pk=user_pk)
+        serializers = UserSerializers(data=request.data, instance=user)
+        if serializers.is_valid(raise_exception=True):
+            serializers.save()
+            return Response(serializers.data)
+    return Response({})
