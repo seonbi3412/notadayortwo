@@ -23,7 +23,7 @@
   import axios from 'axios'
   import { mapGetters } from 'vuex'
   export default {
-    props:{
+    props: {
       movies: {
         type: Array,
         required: true
@@ -32,10 +32,14 @@
         type: Array,
         required: true
       },
-      users: {
-        type:Array,
-        required:true
-      }
+      users:{
+        type: Array,
+        required: true
+      },
+      actors:{
+        type: Array,
+        required: true
+      },
     },
     data() {
       return {

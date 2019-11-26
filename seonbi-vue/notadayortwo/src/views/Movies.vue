@@ -1,7 +1,7 @@
 <template>
   <div class="movies">
     <h1>영화 목록 </h1>
-    <movie-list :movies="movies" :genres="genres"/>
+    <movie-list :movies="movies" :genres="genres" :users="users" :actors="actors"/>
     <router-view />
   </div>
 </template>
@@ -25,9 +25,13 @@ export default {
       required: true
     },
     users:{
-        type: Array,
-        required: true
-      },
+      type: Array,
+      required: true
+    },
+    actors:{
+      type: Array,
+      required: true
+    },
   },
   data() {
     return {

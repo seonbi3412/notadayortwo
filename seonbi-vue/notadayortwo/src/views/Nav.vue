@@ -34,12 +34,16 @@ export default {
       isAuthenticated: this.$session.has('jwt'),
     }
   },
-  props:{
-    genres:{
+  props: {
+    genres: {
       type: Array,
       required: true
     },
     users:{
+      type: Array,
+      required: true
+    },
+    actors:{
       type: Array,
       required: true
     },

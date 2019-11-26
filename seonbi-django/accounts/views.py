@@ -30,6 +30,6 @@ def update(request, user_pk):
         user = get_object_or_404(User, pk=user_pk)
         serializers = UserSerializers(data=request.data, instance=user)
         if serializers.is_valid(raise_exception=True):
-            serializers.save()
+            serializers.update()
             return Response(serializers.data)
     return Response({})
