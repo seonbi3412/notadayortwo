@@ -9,6 +9,8 @@ class Genre(models.Model):
 class Actor(models.Model):
     name = models.CharField(max_length=20)
     name_en = models.CharField(max_length=40, blank=True)
+    birthday = models.TextField(blank=True)
+    profile_path = models.TextField(blank=True)
     like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_actors', blank=True)
 
 class Movie(models.Model):
@@ -19,6 +21,9 @@ class Movie(models.Model):
     description = models.TextField()
     score = models.FloatField()
     open_date = models.DateField()
+    director = models.IntegerField(blank=True)
+    video = models.TextField(blank=True)
+    country = models.TextField(blank=True)
     watchgrade = models.CharField(max_length=15, blank=True)
     actors = models.ManyToManyField(Actor, related_name='filmography', blank=True)
     like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='like_movies', blank=True)
