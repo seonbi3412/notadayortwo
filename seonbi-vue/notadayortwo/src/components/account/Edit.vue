@@ -45,7 +45,7 @@
       </b-form-group>
 
       <b-button type="submit" variant="primary">Submit</b-button>
-      <b-button to="/account/profile" variant="danger">뒤로가기</b-button>
+      <b-button :to="`/account/profile/${this.user.user_id}`" variant="danger">뒤로가기</b-button>
 
     </b-form>
   </div>
@@ -77,9 +77,13 @@ export default {
       required: true
     },
     users:{
-        type: Array,
-        required: true
-      },
+      type: Array,
+      required: true
+    },
+    actors:{
+      type: Array,
+      required: true
+    },
   },
 	computed: {
     nameValidation() {

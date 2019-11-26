@@ -28,7 +28,19 @@ export default {
     movies: {
       type: Array,
       required: true
-    }
+    },
+    genres: {
+      type: Array,
+      required: true
+    },
+    users:{
+      type: Array,
+      required: true
+    },
+    actors:{
+      type: Array,
+      required: true
+    },
   },
   methods: {
     onInputChange(value) {

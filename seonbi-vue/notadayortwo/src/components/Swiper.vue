@@ -42,7 +42,7 @@ export default {
     movies: {
       type: Array,
       required: true
-    }
+    },
   },
   computed: {
     swiper() {

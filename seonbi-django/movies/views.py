@@ -1,9 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Movie, Review, RootReview, Article, Genre
+from .models import Movie, Review, RootReview, Article, Genre, Actor
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
-from .serializers import MovieSerializer, ReviewSerializer, ArticleSerializer, RootSerializer, User2Serializer, GenreSerializer
+from .serializers import MovieSerializer, ReviewSerializer, ArticleSerializer, RootSerializer, User2Serializer, GenreSerializer, Actor2Serializer
 from django.contrib.auth import get_user_model
 
 from IPython import embed
@@ -21,6 +21,13 @@ def index(request):
 def genre_index(request):
     genres = Genre.objects.all()
     serializers = GenreSerializer(genres, many=True)
+    return Response(serializers.data)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticatedOrReadOnly])
+def actors_index(request):
+    actors = Actor.objects.all()
+    serializers = Actor2Serializer(actors, many=True)
     return Response(serializers.data)
 
 @api_view(['GET'])

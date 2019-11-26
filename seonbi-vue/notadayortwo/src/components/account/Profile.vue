@@ -17,7 +17,7 @@ import { mapGetters } from 'vuex'
 import axios from 'axios'
 export default {
   name: 'profile',
-  props:{
+  props: {
     movies: {
       type: Array,
       required: true
@@ -26,10 +26,14 @@ export default {
       type: Array,
       required: true
     },
-    users: {
-      type:Array,
-      required:true
-    }
+    users:{
+      type: Array,
+      required: true
+    },
+    actors:{
+      type: Array,
+      required: true
+    },
   },
   data() {
     return {

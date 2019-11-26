@@ -8,10 +8,9 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('id', 'username')
 
 class ActorSerializer(serializers.ModelSerializer):
-    like_users = UserSerializer(many=True)
     class Meta:
         model = Actor
-        fields = ['id', 'name', 'name_en', 'like_users']
+        fields = ['id', 'name', 'name_en']
 
 class GenreSerializer(serializers.ModelSerializer):
     like_users = UserSerializer(many=True)
@@ -42,6 +41,13 @@ class MovieSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
         fields = ['id', 'title', 'original_title', 'poster_url', 'actors', 'description', 'score', 'open_date', 'genres', 'like_users']
+
+class Actor2Serializer(serializers.ModelSerializer):
+    like_users = UserSerializer(many=True)
+    filmography = MovieSerializer(many=True)
+    class Meta:
+        model = Actor
+        fields = ['id', 'name', 'name_en', 'like_users', 'filmography']
 
 class User2Serializer(serializers.ModelSerializer):
     like_movies = MovieSerializer(many=True)

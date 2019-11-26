@@ -25,7 +25,15 @@ export default {
     genres: {
       type: Array,
       required: true
-    }
+    },
+    users:{
+      type: Array,
+      required: true
+    },
+    actors:{
+      type: Array,
+      required: true
+    },
   },
   data () {
     return {

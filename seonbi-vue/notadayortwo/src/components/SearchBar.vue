@@ -4,8 +4,9 @@
     <b-form-input placeholder="영화 선택" @change="onInput" v-model="searchInput" list="my-list-id" class="mx-auto my-3" style="width: 400px;"></b-form-input>
 
     <datalist class="my-5" id="my-list-id">
-      <option>Manual Option</option>
-      <option v-for="movie in movies" :key="movie.id">{{ movie.title }}</option>
+      <option v-for="movie in movies" :key="`movie-${movie.id}`">{{ movie.title }}</option>
+      <option v-for="actor in actors" :key="actor.id">{{ actor.name }} {{actor.id}}</option>
+      <option v-for="genre in genres" :key="`genre-${genre.id}`">{{ genre.name }}</option>
     </datalist>
   </div>
 </template>
@@ -22,7 +23,15 @@ export default {
     movies: {
       type: Array,
       required: true
-    }
+    },
+    genres: {
+      type: Array,
+      required: true
+    },
+    actors:{
+      type: Array,
+      required: true
+    },
   },
   methods: {
     onInput(event) {
