@@ -1,7 +1,7 @@
 <template>
   <div class="mx-auto" style="width: 400px;">
     <b-form @submit.prevent="userEdit">
-			<b-form-group id="input-group-1" label="Your Name:" label-for="input-1">
+			<b-form-group id="input-group-1" label="Your Name" label-for="input-1">
         <b-form-input
           id="input-1"
           v-model="form.username"
@@ -17,7 +17,7 @@
         </b-form-valid-feedback>
       </b-form-group>
 
-			<b-form-group id="input-group-2" label="Email address:" label-for="input-2" description="We'll never share your email with anyone else.">
+			<b-form-group id="input-group-2" label="Email address" label-for="input-2" description="We'll never share your email with anyone else.">
         <b-form-input
           id="input-2"
           v-model="form.email"
@@ -27,7 +27,7 @@
         ></b-form-input>
       </b-form-group>
 
-      <b-form-group id="input-group-3" label="Password:" label-for="input-3">
+      <b-form-group id="input-group-3" label="Password" label-for="input-3">
         <b-form-input
           id="input-3"
 					type="password"
@@ -44,7 +44,7 @@
         </b-form-valid-feedback>
       </b-form-group>
 
-      <b-button type="submit" variant="primary">Submit</b-button>
+      <b-button type="submit" variant="primary">Next</b-button>
       <b-button :to="`/account/profile/${this.user.user_id}`" variant="danger">뒤로가기</b-button>
 
     </b-form>
@@ -142,5 +142,4 @@ export default {
 </script>
 
 <style>
-
 </style>

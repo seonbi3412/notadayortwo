@@ -16,6 +16,13 @@
       <div class="container">
         <p>{{ movie.description }}</p>
       </div>
+      <b-container fluid class="p-2 bg-dark">
+        <b-row>
+          <b-col cols="2" v-for="actor in movie.actors" :key="actor.id">
+            <b-img thumbnail fluid v-if="actor.profile_path" :src="`https://image.tmdb.org/t/p/w500${actor.profile_path}`" :alt="actor.name"></b-img>
+          </b-col>
+        </b-row>
+      </b-container>
     </div>
   </div>
 </template>
