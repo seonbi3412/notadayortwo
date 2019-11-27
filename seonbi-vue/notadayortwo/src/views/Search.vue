@@ -23,6 +23,9 @@
         </div>
       </div>
     </div>
+
+
+    
     <h1>배우</h1>
     <div class="row">
       <ActorListItem class="" v-for="actor in searchActors" :key="actor.id" :actor="actor" :reviews="reviews"/>
