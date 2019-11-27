@@ -101,7 +101,7 @@ export default {
         })
     },
     likeMovie() {
-      axios.post(`http://127.0.0.1:8000/movies/${this.movie.id}/like/`, this.user)
+      axios.post(`http://127.0.0.1:8000/movies/${this.movie.id}/like/`, this.user, this.options)
         .then(response => {
           this.movie = response.data
           this.like_count = this.movie.like_users.length

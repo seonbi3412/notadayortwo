@@ -15,7 +15,7 @@
         </b-collapse>
       </b-navbar-nav>
       <b-navbar-nav class="col-2 btn d-flex justify-content-end">
-        <b-button v-if="this.$route.name !== 'search'" v-b-toggle.collapse-1 variant="light" class="btn-sm mr-3"><font-awesome-icon icon="search" size="md"/></b-button>
+        <b-button v-b-toggle.collapse-1 v-if="this.$route.name !== 'search'" variant="light" class="btn-sm mr-3"><font-awesome-icon icon="search" size="md"/></b-button>
         <b-nav-item v-if="!isAuthenticated" to="/account/login">Login</b-nav-item>
         <b-nav-item v-if="!isAuthenticated" to="/account/signup">Signup</b-nav-item>
         <b-nav-item v-if="isAuthenticated" :to="`/account/profile/${this.user.user_id}`">{{this.user.username}}</b-nav-item>

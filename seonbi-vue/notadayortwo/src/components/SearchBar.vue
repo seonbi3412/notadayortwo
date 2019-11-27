@@ -1,7 +1,7 @@
 <template>
   <div class="search">
     <!-- <input  type="text" > -->
-    <b-form-input placeholder="영화 선택" @change="onInput" v-model="searchInput" list="my-list-id" class="mx-auto my-3" style="width: 400px;"></b-form-input>
+    <b-form-input placeholder="검색" @change="onInput" v-model="searchInput" list="my-list-id" class="mx-auto my-3" style="width: 400px;"></b-form-input>
 
     <datalist class="my-5" id="my-list-id">
       <option v-for="movie in movies" :key="`movie-${movie.id}`">{{ movie.title }}</option>
