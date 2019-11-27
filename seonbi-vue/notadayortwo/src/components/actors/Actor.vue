@@ -49,11 +49,11 @@ data() {
               break
             }
           }
+          this.$emit('redataload', true)
         })
         .catch(error => {
           console.log(error)
         })
-        this.$emit('redataload', true)
     }
   },
   mounted() {

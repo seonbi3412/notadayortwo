@@ -65,6 +65,7 @@
             axios.put(`http://127.0.0.1:8000/movies/users/${this.user.user_id}/update_delete/`, data, this.options)
               .then(response => {
                 console.log(response)
+                this.$emit('redataload', true)
                 router.push('/')
               })
               .catch(error => {
@@ -74,7 +75,6 @@
           .catch(error => {
             console.log(error)
           })
-        this.$emit('redataload', true)
       }
     }
   }

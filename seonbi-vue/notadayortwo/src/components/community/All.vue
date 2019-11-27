@@ -84,11 +84,11 @@ export default {
           })
           this.reviews.push(this.tmp_review)
           this.content = ''
+          this.$emit('redataload', true)
         })
         .catch(error => {
           console.log(error)
         })
-        this.$emit('redataload', true)
     },
     deleteReview(review) {
       axios.delete(`http://127.0.0.1:8000/movies/reviews/${review.id}/`, this.options)
@@ -99,11 +99,11 @@ export default {
             this.reviews.splice(idx, 1)
             alert(response.data.message)
           }
+          this.$emit('redataload', true)
         })
         .catch(error => {
           console.log(error)
         })
-        this.$emit('redataload', true)
     },
     editOn(review) {
       console.log(this)
@@ -128,11 +128,11 @@ export default {
         .then(() => {
           const idx = this.reviews.indexOf(review)
           this.$set(this.reviews[idx], 'updated', !review.updated)
+          this.$emit('redataload', true)
         })
         .catch(error => {
           console.log(error)
         })
-        this.$emit('redataload', true)
     },
     editArticle(review) {
       const data = {
@@ -149,11 +149,11 @@ export default {
           const idx = this.reviews.indexOf(review)
           this.$set(this.reviews[idx], 'updated', !review.updated)
           this.$set(this.reviews[idx], 'content', data.content)
+          this.$emit('redataload', true)
         })
         .catch(error => {
           console.log(error)
         })
-        this.$emit('redataload', true)
     }
   }
 }
