@@ -17,6 +17,9 @@
         <p>{{ movie.description }}</p>
       </div>
     </div>
+    <div class="reviewChat col-4 border border-dark">
+      <p v-for="review in reviews" :key="review.id"></p>
+    </div>
   </div>
 </template>
 
@@ -33,6 +36,12 @@ export default {
       isLiked: false,
       like_count: 0,
       videos: []
+    }
+  },
+  props: {
+    reviews: {
+      type: Array,
+      required: true
     }
   },
   components: {
@@ -100,5 +109,9 @@ export default {
 div.detail {
   width: 3000px;
   height: 100vh;
+}
+div.reviewChat {
+  height: 80vh;
+  border-radius: 15px;
 }
 </style>

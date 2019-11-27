@@ -32,6 +32,10 @@ export default {
       type: Array,
       required: true
     },
+    reviews: {
+      type: Array,
+      required: true
+    }
   },
   data() {
     return {

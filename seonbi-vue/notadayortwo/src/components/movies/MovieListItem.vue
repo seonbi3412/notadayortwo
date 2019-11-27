@@ -1,6 +1,6 @@
 <template>
   <div class="movielistitem">
-    <router-link :to="`/movies/${movie.id}`">
+    <router-link :to="`/movies/${movie.id}`" :reviews="reviews">
       <img :src="posterUrl" alt="">
     </router-link>
   </div>
@@ -18,6 +18,10 @@ export default {
   props: {
     movie: {
       type: Object,
+      required: true
+    },
+    reviews: {
+      type: Array,
       required: true
     }
   },

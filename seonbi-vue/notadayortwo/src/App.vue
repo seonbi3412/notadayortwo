@@ -3,7 +3,7 @@
     <div v-if="!this.$route.path.includes('/account/login') && !this.$route.path.includes('/account/signup')">
       <Nav :genres="genres" :users="users" :actors="actors" />
     </div>
-    <router-view :genres="genres" :movies="movies" :users="users" :actors="actors" />
+    <router-view :genres="genres" :movies="movies" :users="users" :actors="actors" :reviews="reviews"/>
     <font-awesome-icon icon="user-secret" />
   </div>
 </template>
@@ -25,6 +25,7 @@ export default {
       genres: [],
       users: [],
       actors: [],
+      reviews: [],
     }
   },
   computed: {
@@ -60,6 +61,16 @@ export default {
     axios.get(`http://127.0.0.1:8000/movies/actors/`)
     .then(response =>{
       this.actors = response.data
+    })
+    .catch(error => {
+      console.log(error)
+    })
+
+    axios.get(`http://127.0.0.1:8000/movies/reviews/`)
+    .then(response =>{
+      this.reviews = response.data.map(data => {
+        return {...data, updated: false}
+      })
     })
     .catch(error => {
       console.log(error)
