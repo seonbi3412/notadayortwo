@@ -106,22 +106,40 @@ export default {
   },
   computed: {
     movies_genre() {
-      if (this.selectedGenres.length === 0 && this.selectedCountry.length===0){ // 초기값일땐 모든 영화 출력
-        return this.movies
+      if(this.selectedGenres.length > 0 && this.selectedCountry.length > 0){
+        return this.movies.filter(movie => {
+              if(this.selectedCountry.includes(movie.country)){
+                let selectMovie = movie.genres.filter(genre => {
+                  if(this.selectedGenres.includes(genre.id)){
+                    return genre
+                  }
+                })
+                if (selectMovie.length > 0){
+                  return selectMovie
+                }
+              }
+            })
       }
-      return this.movies.filter(movie => {
-        if(this.selectedCountry.includes(movie.country)){
-          return movie
-        }
-        let selectMovie = movie.genres.filter(genre => {
-          if(this.selectedGenres.includes(genre.id)){
-            return genre
-            }
+      else if(this.selectedGenres.length === 0 && this.selectedCountry.length > 0){
+        return this.movies.filter(movie => { 
+          if(this.selectedCountry.includes(movie.country)){
+            return movie
+          } 
         })
-        if (selectMovie.length > 0){
-          return selectMovie
-        }
-      })
+      }
+      else if (this.selectedGenres.length > 0 && this.selectedCountry.length===0){ 
+        return this.movies.filter(movie => {
+              let selectMovie = movie.genres.filter(genre => {
+                if(this.selectedGenres.includes(genre.id)){
+                  return genre
+                }
+              })
+              if (selectMovie.length > 0){
+                return selectMovie
+              }
+            })
+      }
+      else{return this.movies}
     }
   },
   methods: {
