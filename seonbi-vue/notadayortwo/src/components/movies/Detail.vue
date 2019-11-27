@@ -24,7 +24,7 @@
         </b-row>
       </b-container>
     </div>
-    <div class="col-4 border border-dark">
+    <div class="col-4 border border-dark rounded">
       <div class="reviewChat py-2">
         <div v-for="review in currentReviews" :key="review.id">
           <div v-if="review.movie === movie.id || review.movie_id === movie.id" class="border border-secondary rounded my-1">
@@ -34,9 +34,9 @@
         </div>
       </div>
       <form @submit.prevent="createReview">
-        <star-rating v-model="rating" :border-width="3" :star-size="15" :inline="true"></star-rating>
-        <input type="text" v-model="content">
-        <button class="btn btn-info" type="submit">등록</button>
+        <star-rating v-model="rating" :border-width="3" :star-size="10" :inline="true"></star-rating>
+        <b-form-input type="text" v-model="content"></b-form-input>
+        <button class="btn btn-info btn-sm" type="submit">등록</button>
       </form>
     </div>
   </div>
@@ -64,7 +64,7 @@ export default {
     users: {
       type: Array,
       required: true
-    }
+    },
   },
   components: {
     Videos

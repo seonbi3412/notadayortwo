@@ -109,7 +109,7 @@ def update_delete(request, review_pk):
     review = get_object_or_404(RootReview, pk=review_pk)
     if request.method == 'PUT':
         serializer = ReviewSerializer(data=request.data, instance=review)
-        embed()
+        # embed()
         if serializer.is_valid(raise_exception=True):
             serializer.save()
             return Response(serializer.data)

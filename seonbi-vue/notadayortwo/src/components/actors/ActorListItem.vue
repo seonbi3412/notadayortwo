@@ -1,7 +1,9 @@
 <template>
-  <div class="actorlistitem">
-    <router-link :to="`/actors/${actor.id}`">
-    {{actor.name}}
+  <div class="actorlistitem d-flex align-items-center">
+    <router-link :to="`/actors/${actor.id}`" class="text-dark">
+      <img v-if="actor.profile_path" :src="`https://image.tmdb.org/t/p/w200${actor.profile_path}`" alt="">
+      <img v-else src="../../assets/profile.jpg" alt="no-profile">
+      <p>{{actor.name}}</p>
     </router-link>
   </div>
 </template>
@@ -25,4 +27,8 @@ export default {
 </script>
 
 <style>
+div.actorlistitem {
+  width: 200px;
+  height: 320px;
+}
 </style>

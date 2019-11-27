@@ -1,5 +1,5 @@
 <template>
-  <div class="container rec col-4">
+  <div class="container rec col-3">
     <h1 class="display-1 neon">Recommended</h1>
     <swiper ref="mySwiper">
       <swiperSlide :options="swiperOption" ref="mySwiper" v-for="movie in movies" :key="movie.id">
