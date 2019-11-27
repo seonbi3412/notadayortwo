@@ -134,17 +134,17 @@ def user_index(request):
     return Response(serializers.data)
 
 @api_view(['PUT', 'DELETE'])
-@permission_classes([IsAuthenticatedOrReadOnly])
+@permission_classes([IsAuthenticated])
 def user_update_delete(request, user_pk):
     User = get_user_model()
     user = get_object_or_404(User, pk=user_pk)
     if request.method == 'PUT':
-        user.like_genres.remove()
-        for like_genre in request.data.get("like_genres"):
-            genre = get_object_or_404(Genre, pk=like_genre["id"])
-            user.like_genres.add(genre)
-        user.save()
+        genres = Genre.objects.all()
+        for genre in genres:
+            genre.like_users.remove(user)
+        for like_genre in request.data:
+            ggg = get_object_or_404(Genre, pk=like_genre["id"])
+            ggg.like_users.add(user)
         return Response({'status': 204, 'message': '등록되었습니다.'})
     else:
-        user.delete()
         return Response({'status': 204, 'message': '삭제되었습니다.'})
