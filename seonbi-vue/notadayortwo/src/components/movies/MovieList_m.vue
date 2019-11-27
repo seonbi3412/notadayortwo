@@ -5,7 +5,7 @@
       :class="visible ? null : 'collapsed'"
       :aria-expanded="visible ? 'true' : 'false'"
       aria-controls="collapse-4"
-      @click="visible = !visible"
+      @click="test"
     >
       필터 선택
     </b-button>
@@ -20,12 +20,6 @@
       </b-form-group>
     </b-collapse>
     </div>
-
-
-    <select class="form-control mx-auto row" style="width: 400px;" v-model="selectedGenreId">
-      <option value="0">장르 선택</option>
-      <option v-for="genre in genres" :key="genre.id" :value="genre.id">{{genre.name}}</option>
-    </select>
     <div class="container d-flex justify-content-center my-4">
       <div class="row">
         <MovieListItem class="col-12 col-md-6 col-xl-4" v-for="movie in movies_genre" :key="movie.id" :movie="movie" :reviews="reviews" :users="users"/>
@@ -66,20 +60,19 @@ export default {
   },
   data () {
     return {
-      selectedGenreId: "0", // 데이터 초기화,
       selected: [], // Must be an array reference!
       filteroptions: [],
-      visible: true
+      visible: false
     }
   },
   computed: {
     movies_genre() {
-      if (this.selectedGenreId === "0"){ // 초기값일땐 모든 영화 출력
+      if (this.selected.length === 0){ // 초기값일땐 모든 영화 출력
         return this.movies
       }
       return this.movies.filter(movie => {
         let selectMovie = movie.genres.filter(genre => {
-          if(genre.id === this.selectedGenreId){
+          if(this.selected.includes(genre.id)){
             return genre
             }
         })
@@ -89,14 +82,18 @@ export default {
       })
     }
   },
-  mounted() {
-    let temp = []
-    console.log(this.$props.genres)
-    let pregenres = this.$props.genres
-    for(let idx in pregenres){
-      temp.push({text: pregenres[idx]["name"], value: pregenres[idx]["id"]})
+  methods: {
+    test() {
+      this.visible = !this.visible
+      if(this.filteroptions.length===0){
+        let temp = []
+        let pregenres = this.$props.genres
+        for(let idx in pregenres){
+          temp.push({text: pregenres[idx]["name"], value: pregenres[idx]["id"]})
+        }
+        this.filteroptions = temp
+      }
     }
-    this.filteroptions = temp
   },
 }
 </script>
