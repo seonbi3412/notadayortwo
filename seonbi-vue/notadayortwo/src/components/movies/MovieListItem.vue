@@ -1,6 +1,6 @@
 <template>
   <div class="movielistitem">
-    <router-link :to="`/movies/${movie.id}`" :reviews="reviews" :users="users">
+    <router-link :to="`/movies/${movie.id}`" :users="users">
       <img :src="posterUrl" alt="">
     </router-link>
   </div>

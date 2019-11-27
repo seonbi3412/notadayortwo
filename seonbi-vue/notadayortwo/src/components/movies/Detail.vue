@@ -61,10 +61,6 @@ export default {
     }
   },
   props: {
-    reviews: {
-      type: Array,
-      required: true
-    },
     users: {
       type: Array,
       required: true
@@ -125,7 +121,19 @@ export default {
     }
   },
   mounted() {
-    this.currentReviews = this.reviews
+    axios.get(`http://127.0.0.1:8000/movies/${this.$route.params.id}/reviews/`)
+      .then(response => {
+        console.log('======================== ')
+        console.log(response)
+        this.currentReviews = response.data
+        this.currentReviews.forEach(review => {
+          this.users.forEach(user => {
+            if (review.user === user.id) {
+              review.user = user
+            }
+          })
+        })
+      })
     axios.get(`http://127.0.0.1:8000/movies/${this.$route.params.id}/`)
       .then(response => {
         this.movie = response.data
