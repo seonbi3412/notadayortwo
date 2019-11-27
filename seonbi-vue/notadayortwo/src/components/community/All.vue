@@ -23,8 +23,7 @@
           <form v-else-if="review.movie_id && review.updated">
             <input type="text" v-model="editContent1">
             <star-rating v-model="review.score" :star-size="12"></star-rating>
-            <button class="btn btn-light" @click.prevent="editReview(review)" v-if="review.movie_id">리뷰</button>
-            <button class="btn btn-light" @click.prevent="editArticle(review)" v-else>댓글</button>
+            <button class="btn btn-light" @click.prevent="editReview(review)">수정</button>
             <button class="btn btn-light" @click.prevent="editOn(review)">취소</button>
           </form>
         </div>
@@ -45,8 +44,7 @@
           </div>
           <form v-else>
             <input type="text" v-model="editContent2">
-            <button class="btn btn-light" @click.prevent="editReview(review)" v-if="review.movie_id">리뷰</button>
-            <button class="btn btn-light" @click.prevent="editArticle(review)" v-else>댓글</button>
+            <button class="btn btn-light" @click.prevent="editArticle(review)">수정</button>
             <button class="btn btn-light" @click.prevent="editOn(review)">취소</button>
           </form>
         </div>
@@ -98,7 +96,7 @@ export default {
   methods: {
     createReview() {
       const data = {
-        'content': this.content1,
+        'content': this.content2,
         'user': this.user.user_id
       }
       axios.post(`http://127.0.0.1:8000/movies/articles/`, data, this.options)
@@ -111,7 +109,7 @@ export default {
             }
           })
           this.reviews.push(this.tmp_review)
-          this.content = ''
+          this.content2 = ''
           this.$emit('redataload', true)
         })
         .catch(error => {
@@ -169,7 +167,6 @@ export default {
     },
     editArticle(review) {
       const data = {
-        'score': review.score,
         'content': this.editContent2,
         'user': review.user.id
       }

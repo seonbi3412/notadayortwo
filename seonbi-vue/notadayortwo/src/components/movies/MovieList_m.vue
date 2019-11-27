@@ -54,8 +54,8 @@
                 <b-collapse id="collapse-america" class="mt-2">
                   <b-form-group label="아메리카">
                     <b-form-checkbox-group
-                      v-model="selectedAmerica"
-                      :options="filterEurope"
+                      v-model="selectedCountry"
+                      :options="filterAmerica"
                       stacked
                       name="buttons-2"
                       buttons
