@@ -59,9 +59,8 @@
       userConcern() {
         axios.get(`http://127.0.0.1:8000/movies/users/${this.user.user_id}/`)
           .then(response => {
-            let data = response.data
-            data.like_genres = this.value
-            console.log(this.options)
+            console.log(response)
+            let data = this.value
             axios.put(`http://127.0.0.1:8000/movies/users/${this.user.user_id}/update_delete/`, data, this.options)
               .then(response => {
                 console.log(response)
