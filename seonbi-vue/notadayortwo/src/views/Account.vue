@@ -1,6 +1,6 @@
 <template>
   <div class="account">
-    <router-view :genres="genres" :users="users"/>
+    <router-view :genres="genres" :users="users" @redataload="loadDBdata"/>
   </div>
 </template>
 <script>
@@ -23,9 +23,13 @@ export default {
       required: true
     },
   },
+  methods: {
+    loadDBdata() {
+      this.$emit('redataload', true)
+    }
+  }
 }
 </script>
-
 <style>
 
 </style>

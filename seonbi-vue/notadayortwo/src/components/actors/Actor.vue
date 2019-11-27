@@ -49,6 +49,7 @@ data() {
               break
             }
           }
+          this.$emit('redataload', true)
         })
         .catch(error => {
           console.log(error)

@@ -43,6 +43,7 @@ export default {
           // vuex actions 호출 -> dispatch
           this.$store.dispatch('login', token)
           this.credentials = {}
+          this.$emit('redataload', true)
           router.push('/')
         })
         .catch(error => {
