@@ -1,11 +1,11 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-6">
-        <h2>영화 리뷰</h2>
+      <div class="col-6 mt-3">
+        <h2 class="text-light">영화 리뷰</h2>
       </div>
-      <div class="col-6">
-        <h2>잡담</h2>
+      <div class="col-6 mt-3">
+        <h2 class="text-light">잡담</h2>
       </div>
     </div>
     <div class="row">
@@ -205,7 +205,7 @@ div.chat {
   width: 500px;
   height: 800px;
   border-radius: 30px;
-  background-color: rgb(230, 230, 230);
+  background-color: rgba(230, 230, 230, 0.7);
   overflow-y: scroll;
 }
 div.chatBubble_u {
@@ -222,7 +222,7 @@ div.chatBubble_u {
 div.chatBubble_u::before {
   border-top: 5px solid transparent; 
   border-left: 0px solid transparent; 
-  border-right: 15px solid rgb(250, 250, 250); 
+  border-right: 15px solid rgba(250, 250, 250, 0.7); 
   border-bottom: 10px solid transparent; 
   content:""; 
   position:absolute;

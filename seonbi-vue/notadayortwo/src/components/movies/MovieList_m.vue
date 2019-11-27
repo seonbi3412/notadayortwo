@@ -2,7 +2,7 @@
   <div class="movielist_m">
     <div class="container">
       <div class="row">
-        <div class="col-12">
+        <div class="col-12 text-light">
           <b-button
           :class="visible ? null : 'collapsed'"
           :aria-expanded="visible ? 'true' : 'false'"
@@ -20,72 +20,67 @@
             </b-form-group>
           </b-collapse>
           <b-collapse id="collaps-continent" v-model="visible" class="mt-2">
-            <div class="row">
-              <div class="col-2">
-                <b-button v-b-toggle.collapse-asia size="sm">asia</b-button>
+            <div class="d-flex justify-content-around">
+              <div>
+                <b-button class="slow" v-b-toggle.collapse-asia size="sm">asia</b-button>
                 <b-collapse id="collapse-asia" class="mt-2">
-                  <b-form-group label="아시아">
+                  <b-form-group>
                     <b-form-checkbox-group
                       v-model="selectedCountry"
                       :options="filterAsia"
                       name="buttons-2"
-                      stacked
                       buttons
                     ></b-form-checkbox-group>
                   </b-form-group>
                 </b-collapse>
               </div>
-              <div class="col-2">
-                <b-button v-b-toggle.collapse-europe size="sm">europe</b-button>
+              <div>
+                <b-button class="slow" v-b-toggle.collapse-europe size="sm">europe</b-button>
                 <b-collapse id="collapse-europe" class="mt-2">
-                  <b-form-group label="유럽">
+                  <b-form-group>
                     <b-form-checkbox-group
                       v-model="selectedCountry"
                       :options="filterEurope"
                       name="buttons-2"
-                      stacked
                       buttons
                     ></b-form-checkbox-group>
                   </b-form-group>
                 </b-collapse>
               </div>
-              <div class="col-2">
-                <b-button v-b-toggle.collapse-america size="sm">america</b-button>
+              <div>
+                <b-button class="slow" v-b-toggle.collapse-america size="sm">america</b-button>
                 <b-collapse id="collapse-america" class="mt-2">
-                  <b-form-group label="아메리카">
+                  <b-form-group>
                     <b-form-checkbox-group
                       v-model="selectedAmerica"
-                      :options="filterEurope"
-                      stacked
+                      :options="filterAmerica"
                       name="buttons-2"
                       buttons
                     ></b-form-checkbox-group>
                   </b-form-group>
                 </b-collapse>
               </div>
-              <div class="col-2">
-                <b-button v-b-toggle.collapse-africa size="sm">africa</b-button>
+              <div>
+                <b-button class="slow" v-b-toggle.collapse-africa size="sm">africa</b-button>
                 <b-collapse id="collapse-africa" class="mt-2">
-                  <b-form-group label="아프리카">
+                  <b-form-group>
                     <b-form-checkbox-group
                       v-model="selectedCountry"
                       :options="filterAfrica"
                       name="buttons-2"
-                      stacked
                       buttons
                     ></b-form-checkbox-group>
                   </b-form-group>
                 </b-collapse>
               </div>
-              <div class="col-2">
-                <b-button v-b-toggle.collapse-oceania size="sm">oceania</b-button>
+              <div>
+                <b-button class="slow" v-b-toggle.collapse-oceania size="sm">oceania</b-button>
                 <b-collapse id="collapse-oceania" class="mt-2">
-                  <b-form-group label="오세아니아">
+                  <b-form-group>
                     <b-form-checkbox-group
                       v-model="selectedCountry"
                       :options="filterOceania"
                       name="buttons-2"
-                      stacked
                       buttons
                     ></b-form-checkbox-group>
                   </b-form-group>
@@ -97,20 +92,27 @@
       </div>
     </div>
     <br>
-    <div class="row">
-      <div class="col-4" v-for="movie in movies_genre" :key="`movie-${movie.id}`">
+    <div class="d-flex flex-wrap justify-content-center">
+      <div class="" v-for="movie in movies_genre" :key="`movie-${movie.id}`">
         <div class="flip-card">
           <div class="flip-card-inner">
             <div class="flip-card-front">
               <MovieListItem class="" :movie="movie" :reviews="reviews" :users="users"/>  
             </div>
-            <div class="flip-card-back container d-flex flex-column py-5">
+            <div class="flip-card-back container d-flex flex-column justify-content-center align-items-center py-5">
               <h1>{{ movie.title }}</h1>
               <div>
-                <button 
-                  class="btn btn-sm btn-info m-1" 
-                  :class="{ 'btn-danger': genre.id === 28,'btn-warning': genre.id === 16, 'btn-info': genre.id === 14 }" 
+                <button
+                  class="btn btn-sm m-1 text-light" 
+                  :class="{ 'btn-danger': genre.id === 28 || genre.id === 80 || genre.id === 53 || genre.id === 10752,
+                            'btn-warning': genre.id === 16 || genre.id === 35 || genre.id === 18 || genre.id === 10751 || genre.id === 10749,
+                            'btn-info': genre.id === 14 || genre.id === 878 || genre.id === 12, 
+                            'btn-success': genre.id === 99 || genre.id === 36 || genre.id === 10402 || genre.id === 10770 || genre.id === 37,
+                            'btn-primary': genre.id === 9648 || genre.id === 27 }"
                   v-for="genre in movie.genres" :key="genre.id">{{ genre.name }}</button>
+              </div>
+              <div class="my-3">
+                <star-rating v-model="movie.score" read-only="true" star-size="40"></star-rating>
               </div>
             </div>
           </div>
@@ -244,8 +246,7 @@ export default {
 .flip-card {
   background-color: transparent;
   width: 300px;
-  height: 450px;
-  border: 1px solid #f1f1f1;
+  height: 430px;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
 
@@ -255,7 +256,7 @@ export default {
   width: 100%;
   height: 100%;
   text-align: center;
-  transition: transform 0.8s;
+  transition: transform 1s;
   transform-style: preserve-3d;
 }
 
@@ -280,8 +281,9 @@ export default {
 
 /* Style the back side */
 .flip-card-back {
-  background-color: dodgerblue;
+  background-color: #333333;
   color: white;
   transform: rotateY(180deg);
 }
+
 </style>
