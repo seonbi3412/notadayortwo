@@ -88,6 +88,7 @@ export default {
         .catch(error => {
           console.log(error)
         })
+        this.$emit('redataload', true)
     },
     deleteReview(review) {
       axios.delete(`http://127.0.0.1:8000/movies/reviews/${review.id}/`, this.options)
@@ -102,12 +103,14 @@ export default {
         .catch(error => {
           console.log(error)
         })
+        this.$emit('redataload', true)
     },
     editOn(review) {
       console.log(this)
       this.editContent = review.content
       const idx = this.reviews.indexOf(review)
       this.$set(this.reviews[idx], 'updated', !review.updated)
+      this.$emit('redataload', true)
     },
     editReview(review) {
       
@@ -115,7 +118,7 @@ export default {
         'score': review.score,
         'content': review.content,
         'movie_id': review.movie_id,
-        'user': review.user 
+        'user': review.user
       }
       console.log('Review')
       axios.put(`http://127.0.0.1:8000/movies/reviews/${review.id}/`, data, this.options)
@@ -129,6 +132,7 @@ export default {
         .catch(error => {
           console.log(error)
         })
+        this.$emit('redataload', true)
     },
     editArticle(review) {
       const data = {
@@ -149,6 +153,7 @@ export default {
         .catch(error => {
           console.log(error)
         })
+        this.$emit('redataload', true)
     }
   }
 }

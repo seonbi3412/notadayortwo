@@ -1,6 +1,6 @@
 <template>
   <div class="community">
-    <router-view ></router-view>
+    <router-view @redataload="loadDBdata"></router-view>
     <all :reviews="reviews" :users="users"/>
     <!-- <select class="form-control" v-model="selectedGenreId">
       <option v-for="movie in movies" :key="movie.id" :value="movie.id">{{movie.name}}</option>
@@ -13,8 +13,7 @@
 // @ is an alias to /src
 import All from '@/components/community/All.vue'
 // import Selected from '@/components/community/Selected.vue'
-// import { mapGetters } from 'vuex'
-import axios from 'axios'
+
 
 export default {
   name: 'community',
@@ -39,10 +38,13 @@ export default {
       type: Array,
       required: true
     },
+    reviews: {
+      type: Array,
+      required: true
+    }
   },
   data() {
     return {
-      reviews: [],
     }
   },
   computed: {
@@ -57,16 +59,10 @@ export default {
     //   'user'
     // ])
   },
-  mounted() {
-    axios.get(`http://127.0.0.1:8000/movies/reviews/`)
-    .then(response =>{
-      this.reviews = response.data.map(data => {
-        return {...data, updated: false}
-      })
-    })
-    .catch(error => {
-      console.log(error)
-    })
-  },
+  methods: {
+    loadDBdata() {
+      this.$emit('redataload', true)
+    }
+  }
 }
 </script>

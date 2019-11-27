@@ -2,7 +2,7 @@
   <div class="movies">
     <h1>영화 목록 </h1>
     <movie-list :movies="movies" :genres="genres" :users="users" :actors="actors"/>
-    <router-view />
+    <router-view @redataload="loadDBdata"/>
   </div>
 </template>
 
@@ -41,6 +41,11 @@ export default {
     return {
     }
   },
+  methods: {
+    loadDBdata() {
+      this.$emit('redataload', true)
+    }
+  }
 }
 </script>
 

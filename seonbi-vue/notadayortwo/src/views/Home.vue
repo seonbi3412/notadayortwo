@@ -2,8 +2,8 @@
   <div class="home d-flex justify-content-center row">
     <!-- <search-bar class="my-3" :movies="movies" @input-change-event="onInputChange"/> -->
     <!-- <movie-list :movies="movies"/> -->
-    <Boxoffice class="my-5 col-8" :boxoffice="boxoffice"/>  
-    <RecommendMovies class="my-5 col-4" :movies="movies"/>
+    <Boxoffice class="my-5 col-8" :boxoffice="boxoffice" :reviews="reviews"/>  
+    <RecommendMovies class="my-5 col-4" :movies="movies" :reviews="reviews"/>
   </div>
 </template>
 
@@ -45,6 +45,10 @@ export default {
       type: Array,
       required: true
     },
+    reviews: {
+      type: Array,
+      required: true
+    }
   },
   methods: {
     onInputChange(value) {

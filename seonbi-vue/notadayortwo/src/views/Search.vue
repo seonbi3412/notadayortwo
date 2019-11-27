@@ -1,8 +1,8 @@
 <template>
   <div class="search">
     <search-bar :movies="movies" :actors="actors" :genres="genres" @input-change-event="onInputChange"/>
-    <MovieListItem v-for="movie in searchMovies" :key="`movie-${movie.id}`" :movie="movie"/>
-    <ActorListItem v-for="actor in searchActors" :key="actor.id" :actor="actor"/>
+    <MovieListItem v-for="movie in searchMovies" :key="`movie-${movie.id}`" :movie="movie" :reviews="reviews"/>
+    <ActorListItem v-for="actor in searchActors" :key="actor.id" :actor="actor" :reviews="reviews"/>
   </div>
 </template>
 
@@ -35,6 +35,10 @@ export default {
       type: Array,
       required: true
     },
+    reviews: {
+      type: Array,
+      required: true
+    }
   },
   data() {
     return {

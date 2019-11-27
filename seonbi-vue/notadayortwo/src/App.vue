@@ -3,7 +3,7 @@
     <div v-if="!this.$route.path.includes('/account/login') && !this.$route.path.includes('/account/signup')">
       <Nav :genres="genres" :users="users" :actors="actors" />
     </div>
-    <router-view :genres="genres" :movies="movies" :users="users" :actors="actors" :reviews="reviews"/>
+    <router-view :genres="genres" :movies="movies" :users="users" :actors="actors" :reviews="reviews" @redataload="loadDBdata"/>
     <font-awesome-icon icon="user-secret" />
   </div>
 </template>
@@ -34,47 +34,52 @@ export default {
       'user'
     ])
   },
+  methods: {
+    loadDBdata() {
+      axios.get(`http://127.0.0.1:8000/movies/`)
+        .then(response =>{
+          this.movies = response.data
+        })
+        .catch(error => {
+          console.log(error)
+        })
+
+      axios.get(`http://127.0.0.1:8000/movies/genres/`)
+        .then(response =>{
+          this.genres = response.data
+        })
+        .catch(error => {
+          console.log(error)
+        })
+
+      axios.get(`http://127.0.0.1:8000/movies/users/`)
+        .then(response =>{
+          this.users = response.data
+        })
+        .catch(error => {
+          console.log(error)
+        }),
+      axios.get(`http://127.0.0.1:8000/movies/actors/`)
+        .then(response =>{
+          this.actors = response.data
+        })
+        .catch(error => {
+          console.log(error)
+        })
+
+      axios.get(`http://127.0.0.1:8000/movies/reviews/`)
+        .then(response =>{
+          this.reviews = response.data.map(data => {
+            return {...data, updated: false}
+          })
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    }
+  },
   mounted() {
-    axios.get(`http://127.0.0.1:8000/movies/`)
-    .then(response =>{
-      this.movies = response.data
-    })
-    .catch(error => {
-      console.log(error)
-    })
-
-    axios.get(`http://127.0.0.1:8000/movies/genres/`)
-    .then(response =>{
-      this.genres = response.data
-    })
-    .catch(error => {
-      console.log(error)
-    })
-
-    axios.get(`http://127.0.0.1:8000/movies/users/`)
-    .then(response =>{
-      this.users = response.data
-    })
-    .catch(error => {
-      console.log(error)
-    }),
-    axios.get(`http://127.0.0.1:8000/movies/actors/`)
-    .then(response =>{
-      this.actors = response.data
-    })
-    .catch(error => {
-      console.log(error)
-    })
-
-    axios.get(`http://127.0.0.1:8000/movies/reviews/`)
-    .then(response =>{
-      this.reviews = response.data.map(data => {
-        return {...data, updated: false}
-      })
-    })
-    .catch(error => {
-      console.log(error)
-    })
+    this.loadDBdata()
   },
 }
 </script>
