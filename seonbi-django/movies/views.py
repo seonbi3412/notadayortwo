@@ -81,6 +81,7 @@ def review(request):
         serializers = RootSerializer(reviews, many=True)
     else:
         serializers = ReviewSerializer(data=request.data)
+        # embed()
         if serializers.is_valid(raise_exception=True):
             serializers.save()
             return Response(serializers.data)

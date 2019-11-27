@@ -6,7 +6,7 @@
     </select>
     <div class="container d-flex justify-content-center my-4">
       <div class="row">
-        <MovieListItem class="col-12 col-md-6 col-xl-4" v-for="movie in movies_genre" :key="movie.id" :movie="movie" :reviews="reviews"/>
+        <MovieListItem class="col-12 col-md-6 col-xl-4" v-for="movie in movies_genre" :key="movie.id" :movie="movie" :reviews="reviews" :users="users"/>
       </div>
     </div>
   </div>
@@ -14,7 +14,6 @@
 
 <script>
 import MovieListItem from './MovieListItem.vue'
-import axios from 'axios'
 
 export default {
   name: "movieList_m",
@@ -38,11 +37,14 @@ export default {
       type: Array,
       required: true
     },
+    reviews: {
+      type: Array,
+      required: true
+    }
   },
   data () {
     return {
       selectedGenreId: "0", // 데이터 초기화
-      reviews: []
     }
   },
   computed: {
@@ -62,15 +64,6 @@ export default {
       })
     }
   },
-  mounted() {
-    axios.get('http://127.0.0.1:8000/movies/reviews/')
-      .then(response => {
-        let reviews = response.data
-        this.reviews = reviews.map(review => {
-          return {...review, updated: false}
-        })
-      })
-  }
 }
 </script>
 

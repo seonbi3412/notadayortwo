@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import VueAwesomeSwiper from 'vue-awesome-swiper'
+import StarRating from 'vue-star-rating'
 
 // require styles
 import 'swiper/dist/css/swiper.css'
@@ -17,8 +18,11 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUserSecret, faTrashAlt, faPen } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
+
+
 library.add(faUserSecret, faTrashAlt, faPen)
 
+Vue.component('star-rating', StarRating)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.use(VueAwesomeSwiper, /* { default global options } */)
