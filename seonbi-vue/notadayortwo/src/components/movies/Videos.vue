@@ -1,8 +1,8 @@
 <template>
   <swiper :options="swiperOption" ref="mySwiper">
     <!-- slides -->
-    <swiper-slide v-for=" video in videoList" :key="video">
-      <iframe width="640" height="360" :src="`${video}?controls=0`" frameborder="0" allow="autoplay;"></iframe>
+    <swiper-slide v-for="video in videos" :key="video.id">
+      <iframe width="640" height="360" :src="`https://www.youtube.com/embed/${video.key}?controls=0`" frameborder="0" allow="autoplay;"></iframe>
     </swiper-slide>
     <!-- Optional controls -->
     <div class="swiper-pagination"  slot="pagination"></div>
@@ -14,10 +14,10 @@
 
 <script>
 export default {
-  name: 'Videos',
+  name: 'Video',
   props: {
-    pvideos: {
-      type: String,
+    videos: {
+      type: Array
     }
   },
   data() {
@@ -31,24 +31,10 @@ export default {
           prevEl: '.swiper-button-prev',
         }
       },
-      videoList: []
     }
-  },
-  methods: {
-    // videoList() {
-    //   if(this.pvideos)
-    //   return this.
-    // }
-  },
-  mounted() {
-    if(this.$props.pvideos){
-      this.videoList = this.$props.pvideos.split(" ")
-    }
-
-  },
+  }
 }
 </script>
 
 <style>
-
 </style>
