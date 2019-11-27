@@ -1,6 +1,6 @@
 <template>
   <div class="movies">
-    <h1>영화 목록 </h1>
+    <h1 class="text-light my-3">Movies</h1>
     <movie-list :movies="movies" :genres="genres" :users="users" :actors="actors" :reviews="reviews"/>
     <router-view @redataload="loadDBdata"/>
   </div>

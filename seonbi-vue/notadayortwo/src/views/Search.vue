@@ -2,28 +2,35 @@
   <div class="search container">
     <search-bar class="" :movies="movies" :actors="actors" :genres="genres" @input-change-event="onInputChange"/>
     
-    <h1>영화</h1>
+    <h1 class="text-light">영화</h1>
     <div class="row">
-      <div class="col-4" v-for="movie in searchMovies" :key="`movie-${movie.id}`">
+      <div class="moviecard col-4" v-for="movie in searchMovies" :key="`movie-${movie.id}`">
         <div class="flip-card">
           <div class="flip-card-inner">
             <div class="flip-card-front">
               <MovieListItem class="" :movie="movie" :reviews="reviews"/>  
             </div>
-            <div class="flip-card-back container d-flex flex-column py-5">
+            <div class="flip-card-back container d-flex flex-wrap flex-column py-5 justify-content-center align-items-center">
               <h1>{{ movie.title }}</h1>
               <div>
                 <button 
-                  class="btn btn-sm btn-info m-1" 
-                  :class="{ 'btn-danger': genre.id === 28,'btn-warning': genre.id === 16, 'btn-info': genre.id === 14 }" 
+                  class="btn btn-sm m-1 text-light" 
+                  :class="{ 'btn-danger': genre.id === 28 || genre.id === 80 || genre.id === 53 || genre.id === 10752,
+                            'btn-warning': genre.id === 16 || genre.id === 35 || genre.id === 18 || genre.id === 10751 || genre.id === 10749,
+                            'btn-info': genre.id === 14 || genre.id === 878 || genre.id === 12, 
+                            'btn-success': genre.id === 99 || genre.id === 36 || genre.id === 10402 || genre.id === 10770 || genre.id === 37,
+                            'btn-primary': genre.id === 9648 || genre.id === 27 }" 
                   v-for="genre in movie.genres" :key="genre.id">{{ genre.name }}</button>
+              </div>
+              <div class="my-3">
+                <star-rating v-model="movie.score" read-only="true" star-size="40"></star-rating>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <h1>배우</h1>
+    <h1 class="text-light">배우</h1>
     <div class="row">
       <div class="col-4"  v-for="actor in searchActors" :key="actor.id">
         <div class="flip-card">
@@ -31,8 +38,19 @@
             <div class="flip-card-front">
               <ActorListItem class="" :actor="actor" :reviews="reviews"/>  
             </div>
-            <div class="flip-card-back container d-flex flex-column py-5">
-              <h1>{{ actor.name }}</h1>
+            <div class="flip-card-back container d-flex flex-column py-5 justify-content-center align-items-center">
+              <h1 class="text-info">{{ actor.name }}</h1>
+              <br>
+              <div>
+                {{ actor.birthday }}
+              </div>
+              <br>
+              <div>
+                <p>필모그래피</p>
+                <p class="mb-0" v-for="filmo in actor.filmography" :key="filmo.id">
+                  {{ filmo.title }}
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -130,7 +148,6 @@ export default {
   background-color: transparent;
   width: 300px;
   height: 450px;
-  border: 1px solid #f1f1f1;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
 
@@ -140,7 +157,7 @@ export default {
   width: 100%;
   height: 100%;
   text-align: center;
-  transition: transform 0.8s;
+  transition: transform 1s;
   transform-style: preserve-3d;
 }
 
@@ -159,14 +176,14 @@ export default {
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
-  background-color: #bbb;
   color: black;
 }
 
 /* Style the back side */
 .flip-card-back {
-  background-color: dodgerblue;
+  background-color: #333333;
   color: white;
   transform: rotateY(180deg);
 }
+
 </style>
