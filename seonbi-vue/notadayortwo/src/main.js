@@ -15,12 +15,12 @@ import StarRating from 'vue-star-rating'
 import 'swiper/dist/css/swiper.css'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUserSecret, faTrashAlt, faPen } from '@fortawesome/free-solid-svg-icons'
+import { faUserSecret, faTrashAlt, faPen, faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 
 
-library.add(faUserSecret, faTrashAlt, faPen)
+library.add(faUserSecret, faTrashAlt, faPen, faSearch)
 
 Vue.component('star-rating', StarRating)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
