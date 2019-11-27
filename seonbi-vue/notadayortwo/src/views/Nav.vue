@@ -8,20 +8,18 @@
       </b-navbar-nav>
       <b-navbar-nav class="col-3">
         <b-collapse id="collapse-1" class="mt-2">
-        <b-nav-form v-if="this.$route.name !== 'search'" @submit.prevent="onInputChange">
-          <b-form-input class="search mr-sm-2" placeholder="Search"></b-form-input>
-          <b-button variant="secondary" class="my-2 my-sm-0" type="submit">Search</b-button>
-        </b-nav-form>
+          <b-nav-form v-if="this.$route.name !== 'search'" @submit.prevent="onInputChange">
+            <b-form-input class="search mr-sm-2" placeholder="Search"></b-form-input>
+            <b-button variant="secondary" class="my-2 my-sm-0" type="submit">Search</b-button>
+          </b-nav-form>
         </b-collapse>
-        <b-button v-b-toggle.collapse-1 variant="light">Q</b-button>
       </b-navbar-nav>
-      <b-navbar-nav v-if="!isAuthenticated" class="col-2 btn d-flex justify-content-end">
-        <b-nav-item to="/account/login">Login</b-nav-item>
-        <b-nav-item to="/account/signup">Signup</b-nav-item>
-        </b-navbar-nav>
-      <b-navbar-nav v-else class="col-2 btn d-flex justify-content-end">
-        <b-nav-item :to="`/account/profile/${this.user.user_id}`">{{this.user.username}}</b-nav-item>
-        <b-nav-item to="/" @click.prevent="logout">Logout</b-nav-item>
+      <b-navbar-nav class="col-2 btn d-flex justify-content-end">
+        <b-button v-b-toggle.collapse-1 variant="light" class="btn-sm mr-3"><font-awesome-icon icon="search" size="md"/></b-button>
+        <b-nav-item v-if="!isAuthenticated" to="/account/login">Login</b-nav-item>
+        <b-nav-item v-if="!isAuthenticated" to="/account/signup">Signup</b-nav-item>
+        <b-nav-item v-if="isAuthenticated" :to="`/account/profile/${this.user.user_id}`">{{this.user.username}}</b-nav-item>
+        <b-nav-item v-if="isAuthenticated" to="/" @click.prevent="logout">Logout</b-nav-item>
       </b-navbar-nav>
     </b-navbar>
   </div>
@@ -29,6 +27,8 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
 export default {
     name: 'Nav',
     data() {
@@ -81,6 +81,9 @@ export default {
   mounted() {
     this.isLogin()
   },
+  components: {
+    FontAwesomeIcon
+  }
 }
 </script>
 
