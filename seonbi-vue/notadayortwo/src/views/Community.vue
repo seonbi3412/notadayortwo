@@ -1,7 +1,7 @@
 <template>
   <div class="community">
-    <router-view @redataload="loadDBdata"></router-view>
-    <all :reviews="reviews" :users="users"/>
+    <router-view ></router-view>
+    <all :reviews="reviews" :users="users" :movies="movies"/>
     <!-- <select class="form-control" v-model="selectedGenreId">
       <option v-for="movie in movies" :key="movie.id" :value="movie.id">{{movie.name}}</option>
     </select> -->
@@ -13,7 +13,7 @@
 // @ is an alias to /src
 import All from '@/components/community/All.vue'
 // import Selected from '@/components/community/Selected.vue'
-
+// import { mapGetters } from 'vuex'
 
 export default {
   name: 'community',
@@ -59,10 +59,5 @@ export default {
     //   'user'
     // ])
   },
-  methods: {
-    loadDBdata() {
-      this.$emit('redataload', true)
-    }
-  }
 }
 </script>

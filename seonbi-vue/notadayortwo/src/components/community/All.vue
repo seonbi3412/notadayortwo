@@ -15,13 +15,13 @@
             <p class="m-0">{{ review.user.id }}</p>
           </div>
           <div class="col-9 d-flex align-items-center" :class="{ chatBubble_u: user.user_id !== review.user.id, chatBubble_m: user.user_id === review.user.id }" v-if="review.movie_id && !review.updated">
-            <p class="m-0">{{ review.content }}</p>
+            <p class="m-0">{{ review.content }}  -  {{ review.movie_id }}</p>
             <star-rating v-model="review.score" :read-only="true" :star-size="12"></star-rating>
             <a class="edit_delete" href="" @click.prevent="editOn(review)" v-if="user.user_id === review.user.id"><font-awesome-icon icon="pen" size="xs"/></a>
             <a class="edit_delete" href="" @click.prevent="deleteReview(review)" v-if="user.user_id === review.user.id"><font-awesome-icon icon="trash-alt" size="xs"/></a>
           </div>
           <form v-else-if="review.movie_id && review.updated">
-            <input type="text" v-model="editContent">
+            <input type="text" v-model="editContent1">
             <star-rating v-model="review.score" :star-size="12"></star-rating>
             <button class="btn btn-light" @click.prevent="editReview(review)" v-if="review.movie_id">리뷰</button>
             <button class="btn btn-light" @click.prevent="editArticle(review)" v-else>댓글</button>
@@ -31,7 +31,7 @@
       </div>
       <div class="chat container border my-3 px-1"> <!-- 영화없는 댓글 -->
       <form class="col-12 my-3" @submit.prevent="createReview" v-if="user">
-        <input type="text" v-model="content">
+        <input type="text" v-model="content2">
         <button type="submit">등록</button>
       </form>
         <div class="d-flex justify-content-start" v-for="review in reviews" :key="review.id">
@@ -44,7 +44,7 @@
             <a class="edit_delete" href="" @click.prevent="deleteReview(review)" v-if="user.user_id === review.user.id"><font-awesome-icon icon="trash-alt" size="xs"/></a>
           </div>
           <form v-else>
-            <input type="text" v-model="editContent">
+            <input type="text" v-model="editContent2">
             <button class="btn btn-light" @click.prevent="editReview(review)" v-if="review.movie_id">리뷰</button>
             <button class="btn btn-light" @click.prevent="editArticle(review)" v-else>댓글</button>
             <button class="btn btn-light" @click.prevent="editOn(review)">취소</button>
@@ -64,8 +64,10 @@ export default {
   name: 'all',
   data() {
     return {
-      content: '',
-      editContent: '',
+      content1: '',
+      content2: '',
+      editContent1: '',
+      editContent2: '',
       tmp_review: {},
       is_me: true
     }
@@ -82,6 +84,10 @@ export default {
       type: Array,
       required: true
     },
+    movies: {
+      type: Array,
+      required: true
+    }
   },
   computed: {
     ...mapGetters([
@@ -92,7 +98,7 @@ export default {
   methods: {
     createReview() {
       const data = {
-        'content': this.content,
+        'content': this.content1,
         'user': this.user.user_id
       }
       axios.post(`http://127.0.0.1:8000/movies/articles/`, data, this.options)
@@ -129,7 +135,11 @@ export default {
     },
     editOn(review) {
       console.log(this)
-      this.editContent = review.content
+      if (review.movie_id) {
+        this.editContent1 = review.content
+      } else {
+        this.editContent2 = review.content
+      }
       const idx = this.reviews.indexOf(review)
       this.$set(this.reviews[idx], 'updated', !review.updated)
       this.$emit('redataload', true)
@@ -138,7 +148,7 @@ export default {
       
       const data = {
         'score': review.score,
-        'content': this.editContent,
+        'content': this.editContent1,
         'movie': review.movie_id,
         'user': review.user.id
       }
@@ -151,6 +161,7 @@ export default {
           const idx = this.reviews.indexOf(review)
           this.$set(this.reviews[idx], 'updated', !review.updated)
           this.$emit('redataload', true)
+          this.editContent2 = ''
         })
         .catch(error => {
           console.log(error)
@@ -159,7 +170,7 @@ export default {
     editArticle(review) {
       const data = {
         'score': review.score,
-        'content': this.editContent,
+        'content': this.editContent2,
         'user': review.user.id
       }
       axios.put(`http://127.0.0.1:8000/movies/articles/${review.id}/`, data, this.options)
@@ -171,6 +182,7 @@ export default {
           const idx = this.reviews.indexOf(review)
           this.$set(this.reviews[idx], 'updated', !review.updated)
           this.$set(this.reviews[idx], 'content', data.content)
+          this.editContent = ''
           this.$emit('redataload', true)
         })
         .catch(error => {

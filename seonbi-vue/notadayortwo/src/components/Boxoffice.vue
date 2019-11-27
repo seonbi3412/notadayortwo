@@ -1,14 +1,14 @@
 <template>
-  <div class="container box col-8">
+  <div class="container box col-7">
     <h1 class="display-1 boxoffice">BoxOffice</h1>
     <div>
       <swiper class="swiper-wrapper" :options="swiperOption" ref="mySwiper">
         <!-- slides -->
         <swiper-slide v-for="movie in boxoffice" :key="movie.movieCd">
-          <div class="title" data-swiper-parallax="-100">{{ movie.rank }}</div>
+          <!-- <div class="title" data-swiper-parallax="-100">{{ movie.rank }}</div> -->
           <div class="poster" data-swiper-parallax="-100"><img v-if="movie.poster_url !== ''" :src="`https://image.tmdb.org/t/p/w300${movie.poster_url}`" alt=""></div>
           <!-- Parallax subtitle -->
-          <div class="subtitle" data-swiper-parallax="-150"><strong>{{ movie.movieNm }}</strong></div>
+          <!-- <div class="subtitle" data-swiper-parallax="-150"><strong>{{ movie.movieNm }}</strong></div> -->
           <!-- And parallax text with custom transition duration -->
         </swiper-slide>
         <!-- Optional controls -->
@@ -85,9 +85,11 @@ export default {
 
 <style scoped>
   div.container {
-    background-color: rgba(0, 0, 0, 0.438);
+    border: 1px solid rgb(10, 10, 10);
     border-radius: 50px;
     padding-left: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
   .swiper-slide {
     background-position: center;
@@ -103,37 +105,5 @@ export default {
   font-size: 7em;
   margin: 20px 0 20px 0;
   color: rgb(255, 153, 102);
-  }
-
-  .boxoffice:hover {
-    -webkit-animation: boxoffice;
-    -moz-animation: boxoffice;
-    animation: boxoffice;
-  }
-
-  @-webkit-keyframes boxoffice {
-    from {
-
-    }
-    to {
-
-    }
-  }
-  @-moz-keyframes boxoffice {
-    from {
-
-    }
-    to {
-
-    }
-  }
-
-  @keyframes boxoffice {
-    from {
-
-    }
-    to {
-
-    }
   }
 </style>
