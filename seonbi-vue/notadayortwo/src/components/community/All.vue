@@ -166,7 +166,7 @@ div.chat {
   width: 500px;
   height: 800px;
   border-radius: 30px;
-  background-color: rgb(240, 240, 240);
+  background-color: rgb(230, 230, 230);
   overflow-y: scroll;
 }
 div.chatBubble_u {
