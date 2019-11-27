@@ -11,8 +11,8 @@
 // @ is an alias to /src
 // import SearchBar from '@/components/SearchBar.vue'
 // import MovieList from '@/components/home/MovieList_h.vue'
-import Boxoffice from '@/components/Boxoffice.vue'
-import RecommendMovies from '@/components/RecommendMovies.vue'
+import Boxoffice from '@/components/home/Boxoffice.vue'
+import RecommendMovies from '@/components/home/RecommendMovies.vue'
 import axios from 'axios'
 
 export default {
