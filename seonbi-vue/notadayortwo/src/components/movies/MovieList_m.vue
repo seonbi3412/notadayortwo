@@ -1,36 +1,102 @@
 <template>
-  <div class="movielist_m container">
-    <div>
-      <b-button
-      :class="visible ? null : 'collapsed'"
-      :aria-expanded="visible ? 'true' : 'false'"
-      v-b-toggle.collapse-genre.collapse-country
-      @click="test"
-    >
-      필터 선택
-    </b-button>
-    <b-collapse id="collaps-genre" v-model="visible" class="mt-2">
-      <b-form-group label="장르">
-        <b-form-checkbox-group
-          v-model="selectedGenres"
-          :options="filterGenres"
-          name="buttons-1"
-          buttons
-        ></b-form-checkbox-group>
-      </b-form-group>
-    </b-collapse>
-    <b-collapse id="collaps-country" v-model="visible" class="mt-2">
-      <b-form-group label="국가">
-        <b-form-checkbox-group
-          v-model="selectedCountry"
-          :options="filterCountry"
-          name="buttons-2"
-          buttons
-        ></b-form-checkbox-group>
-      </b-form-group>
-    </b-collapse>
+  <div class="movielist_m">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <b-button
+          :class="visible ? null : 'collapsed'"
+          :aria-expanded="visible ? 'true' : 'false'"
+          v-b-toggle.collapse-genre.collapse-continent
+          @click="test"
+          >필터 선택</b-button>
+          <b-collapse id="collaps-genre" v-model="visible" class="mt-2">
+            <b-form-group label="장르">
+              <b-form-checkbox-group
+                v-model="selectedGenres"
+                :options="filterGenres"
+                name="buttons-1"
+                buttons
+              ></b-form-checkbox-group>
+            </b-form-group>
+          </b-collapse>
+          <b-collapse id="collaps-continent" v-model="visible" class="mt-2">
+            <div class="row">
+              <div class="col-2">
+                <b-button v-b-toggle.collapse-asia size="sm">asia</b-button>
+                <b-collapse id="collapse-asia" class="mt-2">
+                  <b-form-group label="아시아">
+                    <b-form-checkbox-group
+                      v-model="selectedCountry"
+                      :options="filterAsia"
+                      name="buttons-2"
+                      stacked
+                      buttons
+                    ></b-form-checkbox-group>
+                  </b-form-group>
+                </b-collapse>
+              </div>
+              <div class="col-2">
+                <b-button v-b-toggle.collapse-europe size="sm">europe</b-button>
+                <b-collapse id="collapse-europe" class="mt-2">
+                  <b-form-group label="유럽">
+                    <b-form-checkbox-group
+                      v-model="selectedCountry"
+                      :options="filterEurope"
+                      name="buttons-2"
+                      stacked
+                      buttons
+                    ></b-form-checkbox-group>
+                  </b-form-group>
+                </b-collapse>
+              </div>
+              <div class="col-2">
+                <b-button v-b-toggle.collapse-america size="sm">america</b-button>
+                <b-collapse id="collapse-america" class="mt-2">
+                  <b-form-group label="아메리카">
+                    <b-form-checkbox-group
+                      v-model="selectedAmerica"
+                      :options="filterEurope"
+                      stacked
+                      name="buttons-2"
+                      buttons
+                    ></b-form-checkbox-group>
+                  </b-form-group>
+                </b-collapse>
+              </div>
+              <div class="col-2">
+                <b-button v-b-toggle.collapse-africa size="sm">africa</b-button>
+                <b-collapse id="collapse-africa" class="mt-2">
+                  <b-form-group label="아프리카">
+                    <b-form-checkbox-group
+                      v-model="selectedCountry"
+                      :options="filterAfrica"
+                      name="buttons-2"
+                      stacked
+                      buttons
+                    ></b-form-checkbox-group>
+                  </b-form-group>
+                </b-collapse>
+              </div>
+              <div class="col-2">
+                <b-button v-b-toggle.collapse-oceania size="sm">oceania</b-button>
+                <b-collapse id="collapse-oceania" class="mt-2">
+                  <b-form-group label="오세아니아">
+                    <b-form-checkbox-group
+                      v-model="selectedCountry"
+                      :options="filterOceania"
+                      name="buttons-2"
+                      stacked
+                      buttons
+                    ></b-form-checkbox-group>
+                  </b-form-group>
+                </b-collapse>
+              </div>
+            </div>
+          </b-collapse>
+        </div>
+      </div>
     </div>
-
+    <br>
     <div class="row">
       <div class="col-4" v-for="movie in movies_genre" :key="`movie-${movie.id}`">
         <div class="flip-card">
@@ -51,7 +117,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -90,34 +155,34 @@ export default {
       selectedGenres: [], // Must be an array reference!
       selectedCountry: [],
       filterGenres: [],
-      filterCountry: [{text: "에스토니아",value: "에스토니아"},
-                      {text: "튀니지",value: "튀니지"},
-                      {text: "프랑스",value: "프랑스"},
-                      {text: "미국",value: "미국"},
-                      {text: "독일",value: "독일"},
-                      {text: "대만",value: "대만"},
-                      {text: "아르헨티나",value: "아르헨티나"},
-                      {text: "영국",value: "영국"},
-                      {text: "슬로바키아",value: "슬로바키아"},
-                      {text: "인도",value: "인도"},
-                      {text: "중국",value: "중국"},
-                      {text: "브라질",value: "브라질"},
-                      {text: "브루나이",value: "브루나이"},
-                      {text: "폴란드",value: "폴란드"},
+      filterAsia: [{text: "한국",value: "한국"},
+                   {text: "대만",value: "대만"},
+                   {text: "인도",value: "인도"},
+                   {text: "중국",value: "중국"},
+                   {text: "브루나이",value: "브루나이"},
+                   {text: "베트남",value: "베트남"},
+                   {text: "태국",value: "태국"},
+                   {text: "일본",value: "일본"},
+                   {text: "러시아",value: "러시아"},
+                   {text: "싱가포르",value: "싱가포르"},
+                   {text: "캄보디아",value: "캄보디아"}],
+      filterAfrica: [{text: "튀니지",value: "튀니지"},
+                     {text: "나이지리아",value: "나이지리아"}],
+      filterAmerica: [{text: "미국",value: "미국"},
                       {text: "캐나다",value: "캐나다"},
-                      {text: "이탈리아",value: "이탈리아"},
-                      {text: "베트남",value: "베트남"},
-                      {text: "호주",value: "호주"},
-                      {text: "스웨덴",value: "스웨덴"},
-                      {text: "덴마크",value: "덴마크"},
-                      {text: "나이지리아",value: "나이지리아"},
-                      {text: "벨기에",value: "벨기에"},
-                      {text: "태국",value: "태국"},
-                      {text: "일본",value: "일본"},
-                      {text: "러시아",value: "러시아"},
-                      {text: "싱가포르",value: "싱가포르"},
-                      {text: "캄보디아",value: "캄보디아"},
-                      {text: "한국",value: "한국"}],
+                      {text: "아르헨티나",value: "아르헨티나"},
+                      {text: "브라질",value: "브라질"}],
+      filterEurope:[{text: "에스토니아",value: "에스토니아"},
+                    {text: "프랑스",value: "프랑스"},
+                    {text: "독일",value: "독일"},
+                    {text: "영국",value: "영국"},
+                    {text: "슬로바키아",value: "슬로바키아"},
+                    {text: "폴란드",value: "폴란드"},
+                    {text: "이탈리아",value: "이탈리아"},
+                    {text: "스웨덴",value: "스웨덴"},
+                    {text: "덴마크",value: "덴마크"},
+                    {text: "벨기에",value: "벨기에"}],
+      filterOceania: [{text: "호주",value: "호주"}],
       visible: false
     }
   },
@@ -218,6 +283,5 @@ export default {
   background-color: dodgerblue;
   color: white;
   transform: rotateY(180deg);
-  overflow: scroll;
 }
 </style>

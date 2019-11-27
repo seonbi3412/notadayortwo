@@ -1,9 +1,8 @@
 <template>
-  <div class="actorlistitem d-flex align-items-center">
-    <router-link :to="`/actors/${actor.id}`" class="text-dark">
-      <img v-if="actor.profile_path" :src="`https://image.tmdb.org/t/p/w200${actor.profile_path}`" alt="">
-      <img v-else src="../../assets/profile.jpg" alt="no-profile">
-      <p>{{actor.name}}</p>
+  <div class="actorlistitem">
+    <router-link :to="`/actors/${actor.id}`">
+      <img v-if="actor.profile_path" :src="`https://image.tmdb.org/t/p/w200${actor.profile_path}`" alt="" style="width:100%">
+      <img v-else src="../../assets/profile.jpg" alt="no-profile" style="width:100%">
     </router-link>
   </div>
 </template>
@@ -14,7 +13,6 @@ export default {
   name: "actorListItem",
   data() {
     return {
-      // posterUrl: `https://image.tmdb.org/t/p/w300${this.movie.poster_url}`
     }
   },
   props: {
@@ -28,7 +26,7 @@ export default {
 
 <style>
 div.actorlistitem {
-  width: 200px;
-  height: 320px;
+  width: 100%;
+  height: 100%;
 }
 </style>

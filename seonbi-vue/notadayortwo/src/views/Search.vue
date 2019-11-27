@@ -23,12 +23,20 @@
         </div>
       </div>
     </div>
-
-
-    
     <h1>배우</h1>
     <div class="row">
-      <ActorListItem class="" v-for="actor in searchActors" :key="actor.id" :actor="actor" :reviews="reviews"/>
+      <div class="col-4"  v-for="actor in searchActors" :key="actor.id">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <ActorListItem class="" :actor="actor" :reviews="reviews"/>  
+            </div>
+            <div class="flip-card-back container d-flex flex-column py-5">
+              <h1>{{ actor.name }}</h1>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -160,6 +168,5 @@ export default {
   background-color: dodgerblue;
   color: white;
   transform: rotateY(180deg);
-  overflow: scroll;
 }
 </style>
