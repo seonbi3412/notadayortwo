@@ -1,7 +1,7 @@
 <template>
   <div class="movies">
     <h1>영화 목록 </h1>
-    <movie-list :movies="movies" :genres="genres" :users="users" :actors="actors"/>
+    <movie-list :movies="movies" :genres="genres" :users="users" :actors="actors" :reviews="reviews"/>
     <router-view @redataload="loadDBdata"/>
   </div>
 </template>
