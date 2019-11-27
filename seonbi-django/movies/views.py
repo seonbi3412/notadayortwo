@@ -45,7 +45,7 @@ def actor_detail(request, actor_pk):
     return Response(serializers.data)
 
 @api_view(['POST'])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 def like_movie(request, movie_pk):
     movie = get_object_or_404(Movie, pk=movie_pk)
     user = get_user_model().objects.get(pk=request.data.get('user_id'))
@@ -56,6 +56,20 @@ def like_movie(request, movie_pk):
         else:
             movie.like_users.add(user)
     serializers = MovieSerializer(movie)
+    return Response(serializers.data)
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def actor_like(request, actor_pk):
+    actor = get_object_or_404(Actor, pk=actor_pk)
+    user = get_user_model().objects.get(pk=request.data.get('user_id'))
+    # embed()
+    if request.method == 'POST':
+        if user in actor.like_users.all():
+            actor.like_users.remove(user)
+        else:
+            actor.like_users.add(user)
+    serializers = Actor2Serializer(actor)
     return Response(serializers.data)
     
 
@@ -129,14 +143,6 @@ def user_update_delete(request, user_pk):
         for like_genre in request.data.get("like_genres"):
             genre = get_object_or_404(Genre, pk=like_genre["id"])
             user.like_genres.add(genre)
-        user.like_actors.remove()
-        for like_actor in request.data.get("like_actors"):
-            actor = get_object_or_404(Actor, pk=like_actor["id"])
-            user.like_actors.add(actor)
-        user.like_movies.remove()
-        for like_movies in request.data.get("like_movies"):
-            movie = get_object_or_404(Movie, pk=like_movie["id"])
-            user.like_movies.add(genre)
         user.save()
         return Response({'status': 204, 'message': '등록되었습니다.'})
     else:

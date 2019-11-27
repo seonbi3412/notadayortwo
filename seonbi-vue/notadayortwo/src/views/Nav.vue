@@ -7,10 +7,13 @@
         <b-nav-item to="/community" class="btn">Community</b-nav-item>
       </b-navbar-nav>
       <b-navbar-nav class="col-3">
+        <b-button v-b-toggle.collapse-1 variant="primary">Q</b-button>
+        <b-collapse id="collapse-1" class="mt-2">
         <b-nav-form v-if="this.$route.name !== 'search'" @submit.prevent="onInputChange">
           <b-form-input class="search mr-sm-2" placeholder="Search"></b-form-input>
           <b-button variant="secondary" class="my-2 my-sm-0" type="submit">Search</b-button>
         </b-nav-form>
+        </b-collapse>
       </b-navbar-nav>
       <b-navbar-nav v-if="!isAuthenticated" class="col-2 btn d-flex justify-content-end">
         <b-nav-item to="/account/login">Login</b-nav-item>
