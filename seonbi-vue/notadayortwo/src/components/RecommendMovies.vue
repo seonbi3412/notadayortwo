@@ -3,7 +3,7 @@
     <h1 class="display-1 neon">Recommended</h1>
     <swiper ref="mySwiper">
       <swiperSlide :options="swiperOption" ref="mySwiper" v-for="movie in movies" :key="movie.id">
-        <movie-list-item :movie="movie" :reviews="reviews"/>
+        <movie-list-item :movie="movie" :reviews="reviews" :users="users"/>
       </swiperSlide>
 
       <div class="swiper-pagination"  slot="pagination"></div>
@@ -44,6 +44,10 @@ export default {
       required: true
     },
     reviews: {
+      type: Array,
+      required: true
+    },
+    users: {
       type: Array,
       required: true
     }

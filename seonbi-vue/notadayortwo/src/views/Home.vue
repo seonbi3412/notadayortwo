@@ -3,7 +3,7 @@
     <!-- <search-bar class="my-3" :movies="movies" @input-change-event="onInputChange"/> -->
     <!-- <movie-list :movies="movies"/> -->
     <Boxoffice class="my-5 col-8" :boxoffice="boxoffice" :reviews="reviews"/>  
-    <RecommendMovies class="my-5 col-4" :movies="movies" :reviews="reviews"/>
+    <RecommendMovies class="my-5 col-4" :movies="movies" :reviews="reviews" :users="users"/>
   </div>
 </template>
 
