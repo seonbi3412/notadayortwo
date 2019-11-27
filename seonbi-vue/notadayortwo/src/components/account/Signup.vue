@@ -1,5 +1,6 @@
 <template>
   <div class="mx-auto" style="width: 400px;" v-if="show">
+    <h1>회원 가입</h1>
     <b-form @submit.prevent="userSinup">
 			<b-form-group id="input-group-1" label="Your Name:" label-for="input-1">
         <b-form-input
@@ -57,7 +58,7 @@ import router from '../../router'
 import axios from 'axios'
 import { mapGetters } from 'vuex'
 export default {
-	name: 'signup',
+	name: 'Signup',
 	data() {
 		return {
 			form: {
@@ -120,6 +121,8 @@ export default {
                 this.$session.set('jwt', token)
                 // vuex actions 호출 -> dispatch
                 this.$store.dispatch('login', token)
+                this.$emit('redataload', true)
+                this.$bvModal.hide('modal-2')
                 router.push({
                   name: 'concern',
                   params: {genres:this.genres, users:this.users}

@@ -43,6 +43,7 @@ export default {
           // vuex actions 호출 -> dispatch
           this.$store.dispatch('login', token)
           this.credentials = {}
+          this.$bvModal.hide('modal-1')
           this.$emit('redataload', true)
           router.push('/')
         })
