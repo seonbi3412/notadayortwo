@@ -17,6 +17,7 @@ const actions = {
   // 첫번째 인자는 context (다양한)
   // 이후 인자는 payload(임의의 매개변수 값)
   login(context, token) {
+    console.log('login 한다.')
       // mutation 호출 -> commit
     context.commit('setToken', token)
   },

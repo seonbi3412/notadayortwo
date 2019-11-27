@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="text-dark">
     <div v-if="!this.$route.path.includes('/account/login') && !this.$route.path.includes('/account/signup')">
-      <Nav :genres="genres" :users="users" :actors="actors" />
+      <Nav :genres="genres" :movies="movies" :users="users" :actors="actors" :reviews="reviews" />
     </div>
     <router-view :genres="genres" :movies="movies" :users="users" :actors="actors" :reviews="reviews" @redataload="loadDBdata"/>
     <font-awesome-icon icon="user-secret" />
@@ -35,6 +35,12 @@ export default {
     ])
   },
   methods: {
+    isLogin() {
+      this.$session.start()
+      if (this.$session.has('jwt')) {
+        this.$store.dispatch('login', this.$session.get('jwt'))
+      }
+    },
     loadDBdata() {
       axios.get(`http://127.0.0.1:8000/movies/`)
         .then(response =>{

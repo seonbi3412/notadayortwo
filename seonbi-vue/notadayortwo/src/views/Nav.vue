@@ -16,8 +16,17 @@
       </b-navbar-nav>
       <b-navbar-nav class="col-2 btn d-flex justify-content-end">
         <b-button v-b-toggle.collapse-1 v-if="this.$route.name !== 'search'" variant="light" class="btn-sm mr-3"><font-awesome-icon icon="search"/></b-button>
-        <b-nav-item v-if="!isAuthenticated" to="/account/login">Login</b-nav-item>
-        <b-nav-item v-if="!isAuthenticated" to="/account/signup">Signup</b-nav-item>
+
+
+        <b-nav-item v-if="!isAuthenticated" v-b-modal.modal-1>Login</b-nav-item>
+        <b-modal id="modal-1" title="" hide-footer>
+          <Login :genres="genres" :movies="movies" :users="users" :actors="actors" :reviews="reviews" @redataload="loadDBdata"/>
+        </b-modal>
+        <b-nav-item v-if="!isAuthenticated" v-b-modal.modal-2>Signup</b-nav-item>
+        <b-modal id="modal-2" title="" hide-footer>
+          <Signup :genres="genres" :movies="movies" :users="users" :actors="actors" :reviews="reviews" @redataload="loadDBdata"/>
+        </b-modal>
+
         <b-nav-item v-if="isAuthenticated" :to="`/account/profile/${this.user.user_id}`">{{this.user.username}}</b-nav-item>
         <b-nav-item v-if="isAuthenticated" to="/" @click.prevent="logout">Logout</b-nav-item>
       </b-navbar-nav>
@@ -28,16 +37,21 @@
 <script>
 import { mapGetters } from 'vuex'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import Signup from '@/components/account/Signup.vue'
+import Login from '@/components/account/Login.vue'
 
 export default {
     name: 'Nav',
     data() {
     return {
-      movies: [],
       isAuthenticated: this.$session.has('jwt'),
     }
   },
   props: {
+    movies: {
+      type: Array,
+      required: true
+    },
     genres: {
       type: Array,
       required: true
@@ -50,6 +64,10 @@ export default {
       type: Array,
       required: true
     },
+    reviews: {
+      type: Array,
+      required: true
+    }
   },
   methods: {
     isLogin() {
@@ -71,6 +89,9 @@ export default {
         params: {movieName:event.target[0].value}
       })
     },
+    loadDBdata() {
+      this.isAuthenticated = this.$session.has('jwt')
+    },
   },
   computed: {
     ...mapGetters([
@@ -82,7 +103,9 @@ export default {
     this.isLogin()
   },
   components: {
-    FontAwesomeIcon
+    FontAwesomeIcon,
+    Signup,
+    Login,
   }
 }
 </script>
@@ -91,6 +114,5 @@ export default {
   div {
     font-family: 'Komika Boogie', '배달의민족 주아';
     letter-spacing: 4px;
-    color: aquamarine;
   }
 </style>

@@ -95,10 +95,9 @@ def review(request):
     return Response(serializers.data)
 
 @api_view(['GET', 'POST'])
-@permission_classes([AllowAny])
+@permission_classes([IsAuthenticated])
 def article(request):
     serializers = ArticleSerializer(data=request.data)
-    # embed()
     if serializers.is_valid(raise_exception=True):
         serializers.save()
         return Response(serializers.data)
@@ -126,6 +125,8 @@ def update(request, review_pk):
         serializer.save()
         return Response(serializer.data)
 
+
+# ------------ user ----------------
 @api_view(['GET'])
 @permission_classes([IsAuthenticatedOrReadOnly])
 def user_detail(request, user_pk):
