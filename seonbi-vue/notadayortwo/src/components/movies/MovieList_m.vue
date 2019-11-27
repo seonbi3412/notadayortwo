@@ -6,7 +6,7 @@
     </select>
     <div class="container d-flex justify-content-center my-4">
       <div class="row">
-        <MovieListItem class="col-12 col-md-6 col-xl-4" v-for="movie in movies_genre" :key="movie.id" :movie="movie" :reviews="reviews"/>
+        <MovieListItem class="col-12 col-md-6 col-xl-4" v-for="movie in movies_genre" :key="movie.id" :movie="movie" :reviews="reviews" :users="users"/>
       </div>
     </div>
   </div>

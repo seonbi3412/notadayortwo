@@ -1,6 +1,6 @@
 <template>
   <div class="movielistitem">
-    <router-link :to="`/movies/${movie.id}`" :reviews="reviews">
+    <router-link :to="`/movies/${movie.id}`" :users="users">
       <img :src="posterUrl" alt="">
     </router-link>
   </div>
@@ -21,6 +21,10 @@ export default {
       required: true
     },
     reviews: {
+      type: Array,
+      required: true
+    },
+    users: {
       type: Array,
       required: true
     }

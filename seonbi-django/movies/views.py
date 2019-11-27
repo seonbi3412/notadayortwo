@@ -72,6 +72,13 @@ def actor_like(request, actor_pk):
     serializers = Actor2Serializer(actor)
     return Response(serializers.data)
     
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def movie_reviews(request, movie_pk):
+    movie = get_object_or_404(Movie, pk=movie_pk)
+    reviews = movie.review_set.all()
+    serializers = ReviewSerializer(reviews, many=True)
+    return Response(serializers.data)
 
 @api_view(['GET', 'POST'])
 @permission_classes([AllowAny])
@@ -81,6 +88,7 @@ def review(request):
         serializers = RootSerializer(reviews, many=True)
     else:
         serializers = ReviewSerializer(data=request.data)
+        # embed()
         if serializers.is_valid(raise_exception=True):
             serializers.save()
             return Response(serializers.data)

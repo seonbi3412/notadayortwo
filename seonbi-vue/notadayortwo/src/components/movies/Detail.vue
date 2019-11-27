@@ -24,8 +24,20 @@
         </b-row>
       </b-container>
     </div>
-    <div class="reviewChat col-4 border border-dark">
-      <p v-for="review in reviews" :key="review.id"></p>
+    <div class="col-4 border border-dark">
+      <div class="reviewChat py-2">
+        <div v-for="review in currentReviews" :key="review.id">
+          <div v-if="review.movie === movie.id || review.movie_id === movie.id" class="border border-secondary rounded my-1">
+            <p class="mb-0 d-inline">{{ review.content }} - {{ review.user.username }} | </p>
+            <star-rating :star-size="10" :inline="true" :read-only="true" v-model="review.score"></star-rating>
+          </div>
+        </div>
+      </div>
+      <form @submit.prevent="createReview">
+        <star-rating v-model="rating" :border-width="3" :star-size="15" :inline="true"></star-rating>
+        <input type="text" v-model="content">
+        <button class="btn btn-info" type="submit">등록</button>
+      </form>
     </div>
   </div>
 </template>
@@ -38,15 +50,18 @@ export default {
   name: "detail",
   data() {
     return {
+      currentReviews: [],
       movie: {},
       poster_url: "",
       isLiked: false,
       like_count: 0,
-      videos: []
+      videos: [],
+      content: '',
+      rating: 0,
     }
   },
   props: {
-    reviews: {
+    users: {
       type: Array,
       required: true
     }
@@ -61,6 +76,30 @@ export default {
     ]),
   },
   methods: {
+    createReview() {
+      const data = {
+        'content': this.content,
+        'movie': this.movie.id,
+        'user': this.user.user_id,
+        'score': this.rating
+      }
+      axios.post(`http://127.0.0.1:8000/movies/reviews/`, data, this.options)
+        .then(response => {
+          let tmp_review = response.data
+          this.users.forEach(user => {
+            if (user.id === tmp_review.user) {
+              tmp_review.user = user
+            }
+          })
+          this.currentReviews.push(tmp_review)
+          console.log(tmp_review)
+          this.content = ''
+          this.rating = 0
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    },
     likeMovie() {
       axios.post(`http://127.0.0.1:8000/movies/${this.movie.id}/like/`, this.user)
         .then(response => {
@@ -82,6 +121,19 @@ export default {
     }
   },
   mounted() {
+    axios.get(`http://127.0.0.1:8000/movies/${this.$route.params.id}/reviews/`)
+      .then(response => {
+        console.log('======================== ')
+        console.log(response)
+        this.currentReviews = response.data
+        this.currentReviews.forEach(review => {
+          this.users.forEach(user => {
+            if (review.user === user.id) {
+              review.user = user
+            }
+          })
+        })
+      })
     axios.get(`http://127.0.0.1:8000/movies/${this.$route.params.id}/`)
       .then(response => {
         this.movie = response.data
@@ -99,7 +151,6 @@ export default {
       .then(movie => {
         axios.get(`https://api.themoviedb.org/3/movie/${movie.id}/videos?api_key=6b356c5ae179a5d932c01687a436b72e&language=ko-KR`)
           .then(response => {
-            console.log(response.data.results)
             this.videos = response.data.results
           })
           .catch(error => {
@@ -121,5 +172,6 @@ div.detail {
 div.reviewChat {
   height: 80vh;
   border-radius: 15px;
+  overflow-y: scroll;
 }
 </style>
