@@ -10,6 +10,7 @@
             <div class="flip-card-front">
               <MovieListItem class="" :movie="movie" :reviews="reviews"/>  
             </div>
+            <router-link :to="`movies/${movie.id}`">
             <div class="flip-card-back container d-flex flex-wrap flex-column py-5 justify-content-center align-items-center">
               <h1>{{ movie.title }}</h1>
               <div>
@@ -26,6 +27,7 @@
                 <star-rating v-model="movie.score" read-only="true" star-size="40"></star-rating>
               </div>
             </div>
+            </router-link>
           </div>
         </div>
       </div>

@@ -96,6 +96,8 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+}
+body {
   background-image: url('./assets/bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;

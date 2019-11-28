@@ -1,14 +1,11 @@
 <template>
   <div class="container">
-    <div class="row">
-      <div class="col-6 mt-3">
-        <h2 class="text-light">영화 리뷰</h2>
+    <div class="">
+      <div class="">
+        <div class="col-6 mt-3">
+          <h2 class="text-light">영화 리뷰</h2>
+        </div>
       </div>
-      <div class="col-6 mt-3">
-        <h2 class="text-light">잡담</h2>
-      </div>
-    </div>
-    <div class="row">
       <div class="chat container border my-3 px-1">
         <div class="d-flex justify-content-start" v-for="review in reviews" :key="review.id">
           <div v-if="user.user_id !== review.user.id && review.movie_id" class="userThumb col-1 d-flex align-items-center">
@@ -26,6 +23,11 @@
             <button class="btn btn-light" @click.prevent="editReview(review)">수정</button>
             <button class="btn btn-light" @click.prevent="editOn(review)">취소</button>
           </form>
+        </div>
+      </div>
+      <div class="">
+        <div class="col-6 mt-3">
+          <h2 class="text-light">잡담</h2>
         </div>
       </div>
       <div class="chat container border my-3 px-1"> <!-- 영화없는 댓글 -->
