@@ -80,6 +80,7 @@ export default {
       this.$session.destroy()
       this.$store.dispatch('logout')
       this.isAuthenticated = this.$session.has('jwt')
+      this.$emit('redataload', true)
     },
     onInputChange(event) {
       console.log(event.target[0].value)
@@ -91,6 +92,7 @@ export default {
     },
     loadDBdata() {
       this.isAuthenticated = this.$session.has('jwt')
+      this.$emit('redataload', true)
     },
   },
   computed: {

@@ -7,8 +7,18 @@ from .serializers import MovieSerializer, ReviewSerializer, ArticleSerializer, R
 from django.contrib.auth import get_user_model
 
 from IPython import embed
-
 # Create your views here.
+
+# ------------ genres -----------------
+@api_view(['GET'])
+@permission_classes([IsAuthenticatedOrReadOnly])
+def genre_index(request):
+    genres = Genre.objects.all()
+    serializers = GenreSerializer(genres, many=True)
+    return Response(serializers.data)
+
+#---------- movies -------------------
+
 @api_view(['GET'])
 @permission_classes([IsAuthenticatedOrReadOnly])
 def index(request):
@@ -17,31 +27,10 @@ def index(request):
     return Response(serializers.data)
 
 @api_view(['GET'])
-@permission_classes([IsAuthenticatedOrReadOnly])
-def genre_index(request):
-    genres = Genre.objects.all()
-    serializers = GenreSerializer(genres, many=True)
-    return Response(serializers.data)
-
-@api_view(['GET'])
-@permission_classes([IsAuthenticatedOrReadOnly])
-def actors_index(request):
-    actors = Actor.objects.all()
-    serializers = Actor2Serializer(actors, many=True)
-    return Response(serializers.data)
-
-@api_view(['GET'])
 @permission_classes([AllowAny])
 def detail(request, movie_pk):
     movie = get_object_or_404(Movie, pk=movie_pk)
     serializers = MovieSerializer(movie)
-    return Response(serializers.data)
-
-@api_view(['GET'])
-@permission_classes([AllowAny])
-def actor_detail(request, actor_pk):
-    actor = get_object_or_404(Actor, pk=actor_pk)
-    serializers = Actor2Serializer(actor)
     return Response(serializers.data)
 
 @api_view(['POST'])
@@ -58,6 +47,21 @@ def like_movie(request, movie_pk):
     serializers = MovieSerializer(movie)
     return Response(serializers.data)
 
+# -------------- actor ----------------
+@api_view(['GET'])
+@permission_classes([IsAuthenticatedOrReadOnly])
+def actors_index(request):
+    actors = Actor.objects.all()
+    serializers = Actor2Serializer(actors, many=True)
+    return Response(serializers.data)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def actor_detail(request, actor_pk):
+    actor = get_object_or_404(Actor, pk=actor_pk)
+    serializers = Actor2Serializer(actor)
+    return Response(serializers.data)
+
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def actor_like(request, actor_pk):
@@ -71,7 +75,8 @@ def actor_like(request, actor_pk):
             actor.like_users.add(user)
     serializers = Actor2Serializer(actor)
     return Response(serializers.data)
-    
+
+#------------------- reviews, articles ------
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def movie_reviews(request, movie_pk):
@@ -158,3 +163,23 @@ def user_update_delete(request, user_pk):
         return Response({'status': 204, 'message': '등록되었습니다.'})
     else:
         return Response({'status': 204, 'message': '삭제되었습니다.'})
+
+
+# ----------------- recommend
+@api_view(['POST'])
+@permission_classes([AllowAny])
+def recommend(request):
+    print(request.data)
+    if request.data['user'] == -1:
+        print(11)
+    else:
+        User = get_user_model()
+        user = get_object_or_404(User, pk=request.data['userid'])
+        movies = Movie.objects.all()
+        print(22)
+        genres = Genre.objects.all()
+        actors = Actor.objects.all()
+        
+
+
+    return Response({'status': 204, 'message': '왔어요'})
