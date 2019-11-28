@@ -208,6 +208,7 @@ div.chat {
   border-radius: 30px;
   background-color: rgba(230, 230, 230, 0.7);
   overflow-y: scroll;
+  -ms-overflow-style: none;
 }
 div.chatBubble_u {
   position:relative;
@@ -258,4 +259,7 @@ a.edit_delete {
 a.edit_delete:hover {
   color: black;
 }
+::-webkit-scrollbar {
+  display:none;
+} 
 </style>

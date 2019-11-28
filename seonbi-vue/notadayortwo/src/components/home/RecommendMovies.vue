@@ -15,7 +15,6 @@
 import MovieListItem from '@/components/movies/MovieListItem.vue'
 import 'swiper/dist/css/swiper.css'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
-
 export default {
   name: 'recommendMovies',
   data() {
@@ -30,7 +29,6 @@ export default {
           stopOnLastSlide: false,
           disableOnInteraction: false,
           reverseDirection: false,
-
         }
       },
       pagination: {

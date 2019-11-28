@@ -113,8 +113,12 @@ export default {
 </script>
 
 <style>
+@import url(//fonts.googleapis.com/earlyaccess/hanna.css);
+/* @import url(//db.onlinewebfonts.com/c/48e8fdcae584b7ce6ca765d7ddda0874?family=Komika+Boogie); */
+@font-face { font-family: 'BMJUA'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff') format('woff'); font-weight: normal; font-style: normal; }
+
 #app {
-  font-family: '배달의민족 한나는 열한살', Helvetica, Arial, sans-serif;
+  font-family: 'Hanna', fantasy, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

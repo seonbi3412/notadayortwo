@@ -173,5 +173,9 @@ div.reviewChat {
   height: 80vh;
   border-radius: 15px;
   overflow-y: scroll;
+  -ms-overflow-style: none;
 }
+::-webkit-scrollbar {
+  display:none;
+} 
 </style>

@@ -114,7 +114,7 @@ export default {
 
 <style scoped>
   div {
-    font-family: 'Komika Boogie', '배달의민족 주아';
+    font-family: 'Komika Boogie', 'BMJUA';
     letter-spacing: 4px;
   }
 </style>

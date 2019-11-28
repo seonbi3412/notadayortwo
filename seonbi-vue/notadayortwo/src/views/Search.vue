@@ -146,6 +146,7 @@ export default {
 </script>
 
 <style>
+
 .flip-card {
   background-color: transparent;
   width: 300px;
