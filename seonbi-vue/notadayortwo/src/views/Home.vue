@@ -11,9 +11,10 @@
 // @ is an alias to /src
 // import SearchBar from '@/components/SearchBar.vue'
 // import MovieList from '@/components/home/MovieList_h.vue'
-import Boxoffice from '@/components/Boxoffice.vue'
-import RecommendMovies from '@/components/RecommendMovies.vue'
+import Boxoffice from '@/components/home/Boxoffice.vue'
+import RecommendMovies from '@/components/home/RecommendMovies.vue'
 import axios from 'axios'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'home',
@@ -30,6 +31,10 @@ export default {
   },
   props: {
     movies: {
+      type: Array,
+      required: true
+    },
+    reMovies: {
       type: Array,
       required: true
     },
@@ -59,6 +64,12 @@ export default {
       })
     },
   },
+  computed: {
+    ...mapGetters([
+      'options',
+      'user'
+    ])
+  },
   mounted() {
     axios.get('http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=20ea3580299a37f479eee8e01bc91ded&targetDt=20191125&itemPerPage=10')
       .then(response => {
@@ -75,6 +86,7 @@ export default {
       .catch(error => {
         console.log(error)
       })
+
   }
 }
 </script>

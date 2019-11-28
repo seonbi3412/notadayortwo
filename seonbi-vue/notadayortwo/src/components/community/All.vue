@@ -1,56 +1,58 @@
 <template>
   <div class="container">
-    <div class="">
-      <div class="">
-        <div class="col-6 mt-3">
-          <h2 class="text-light">영화 리뷰</h2>
+    <div class="row">
+      <div class="col-6 mt-3">
+        <div class="row"><h2 class="text-light col-12">영화 리뷰</h2></div>
+        <div class="row">
+          <div class="chat container border my-3 px-1">
+            <div class="d-flex justify-content-start" v-for="review in reviews" :key="review.id">
+              <div v-if="user.user_id !== review.user.id && review.movie_id" class="userThumb col-1 d-flex align-items-center">
+                <p class="m-0">{{ review.user.id }}</p>
+              </div>
+              <div class="col-9 d-flex align-items-center" :class="{ chatBubble_u: user.user_id !== review.user.id, chatBubble_m: user.user_id === review.user.id }" v-if="review.movie_id && !review.updated">
+                <p class="m-0">{{ review.content }}  -  {{ review.movie_id }}</p>
+                <star-rating v-model="review.score" :read-only="true" :star-size="12"></star-rating>
+                <a class="edit_delete" href="" @click.prevent="editOn(review)" v-if="user.user_id === review.user.id"><font-awesome-icon icon="pen" size="xs"/></a>
+                <a class="edit_delete" href="" @click.prevent="deleteReview(review)" v-if="user.user_id === review.user.id"><font-awesome-icon icon="trash-alt" size="xs"/></a>
+              </div>
+              <form v-else-if="review.movie_id && review.updated">
+                <input type="text" v-model="editContent1">
+                <star-rating v-model="review.score" :star-size="12"></star-rating>
+                <button class="btn btn-light" @click.prevent="editReview(review)">수정</button>
+                <button class="btn btn-light" @click.prevent="editOn(review)">취소</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <div class="col-6 mt-3">
+        <div class="row">
+        <h2 class="text-light col-12">잡담</h2></div>
+        <div class="row">
+          <div class="chat container border my-3 px-1"> <!-- 영화없는 댓글 -->
+            <form class="col-12 my-3" @submit.prevent="createReview" v-if="user">
+              <input type="text" v-model="content2">
+              <button type="submit">등록</button>
+            </form>
+            <div class="d-flex justify-content-start" v-for="review in reviews" :key="review.id">
+              <div v-if="user.user_id !== review.user.id" class="userThumb col-1 d-flex align-items-center">
+                <p class="m-0">{{ review.user.id }}</p>
+              </div>
+              <div class="col-9 d-flex align-items-center" :class="{ chatBubble_u: user.user_id !== review.user.id, chatBubble_m: user.user_id === review.user.id }" v-if="!review.updated">
+                <p class="m-0">{{ review.content }}</p>
+                <a class="edit_delete" href="" @click.prevent="editOn(review)" v-if="user.user_id === review.user.id"><font-awesome-icon icon="pen" size="xs"/></a>
+                <a class="edit_delete" href="" @click.prevent="deleteReview(review)" v-if="user.user_id === review.user.id"><font-awesome-icon icon="trash-alt" size="xs"/></a>
+              </div>
+              <form v-else>
+                <input type="text" v-model="editContent2">
+                <button class="btn btn-light" @click.prevent="editArticle(review)">수정</button>
+                <button class="btn btn-light" @click.prevent="editOn(review)">취소</button>
+              </form>
+            </div>
+          </div> <!-- 영화없는 댓글 -->
         </div>
       </div>
-      <div class="chat container border my-3 px-1">
-        <div class="d-flex justify-content-start" v-for="review in reviews" :key="review.id">
-          <div v-if="user.user_id !== review.user.id && review.movie_id" class="userThumb col-1 d-flex align-items-center">
-            <p class="m-0">{{ review.user.id }}</p>
-          </div>
-          <div class="col-9 d-flex align-items-center" :class="{ chatBubble_u: user.user_id !== review.user.id, chatBubble_m: user.user_id === review.user.id }" v-if="review.movie_id && !review.updated">
-            <p class="m-0">{{ review.content }}  -  {{ review.movie_id }}</p>
-            <star-rating v-model="review.score" :read-only="true" :star-size="12"></star-rating>
-            <a class="edit_delete" href="" @click.prevent="editOn(review)" v-if="user.user_id === review.user.id"><font-awesome-icon icon="pen" size="xs"/></a>
-            <a class="edit_delete" href="" @click.prevent="deleteReview(review)" v-if="user.user_id === review.user.id"><font-awesome-icon icon="trash-alt" size="xs"/></a>
-          </div>
-          <form v-else-if="review.movie_id && review.updated">
-            <input type="text" v-model="editContent1">
-            <star-rating v-model="review.score" :star-size="12"></star-rating>
-            <button class="btn btn-light" @click.prevent="editReview(review)">수정</button>
-            <button class="btn btn-light" @click.prevent="editOn(review)">취소</button>
-          </form>
-        </div>
-      </div>
-      <div class="">
-        <div class="col-6 mt-3">
-          <h2 class="text-light">잡담</h2>
-        </div>
-      </div>
-      <div class="chat container border my-3 px-1"> <!-- 영화없는 댓글 -->
-      <form class="col-12 my-3" @submit.prevent="createReview" v-if="user">
-        <input type="text" v-model="content2">
-        <button type="submit">등록</button>
-      </form>
-        <div class="d-flex justify-content-start" v-for="review in reviews" :key="review.id">
-          <div v-if="user.user_id !== review.user.id" class="userThumb col-1 d-flex align-items-center">
-            <p class="m-0">{{ review.user.id }}</p>
-          </div>
-          <div class="col-9 d-flex align-items-center" :class="{ chatBubble_u: user.user_id !== review.user.id, chatBubble_m: user.user_id === review.user.id }" v-if="!review.updated">
-            <p class="m-0">{{ review.content }}</p>
-            <a class="edit_delete" href="" @click.prevent="editOn(review)" v-if="user.user_id === review.user.id"><font-awesome-icon icon="pen" size="xs"/></a>
-            <a class="edit_delete" href="" @click.prevent="deleteReview(review)" v-if="user.user_id === review.user.id"><font-awesome-icon icon="trash-alt" size="xs"/></a>
-          </div>
-          <form v-else>
-            <input type="text" v-model="editContent2">
-            <button class="btn btn-light" @click.prevent="editArticle(review)">수정</button>
-            <button class="btn btn-light" @click.prevent="editOn(review)">취소</button>
-          </form>
-        </div>
-      </div> <!-- 영화없는 댓글 -->
     </div>
   </div>
 </template>

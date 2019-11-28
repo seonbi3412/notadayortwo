@@ -1,9 +1,9 @@
 <template>
   <div id="app" class="text-dark">
     <div v-if="!this.$route.path.includes('/account/login') && !this.$route.path.includes('/account/signup')">
-      <Nav :genres="genres" :movies="movies" :users="users" :actors="actors" :reviews="reviews" />
+      <Nav :genres="genres" :movies="movies" :users="users" :actors="actors" :reviews="reviews" @redataload="loadDBdata"/>
     </div>
-    <router-view :genres="genres" :movies="movies" :users="users" :actors="actors" :reviews="reviews" @redataload="loadDBdata"/>
+    <router-view :genres="genres" :movies="movies" :users="users" :actors="actors" :reviews="reviews" :reMovies="reMovies" @redataload="loadDBdata"/>
     <font-awesome-icon icon="user-secret" />
   </div>
 </template>
@@ -26,6 +26,7 @@ export default {
       users: [],
       actors: [],
       reviews: [],
+      reMovies: [],
     }
   },
   computed: {
@@ -61,6 +62,27 @@ export default {
       axios.get(`http://127.0.0.1:8000/movies/users/`)
         .then(response =>{
           this.users = response.data
+
+          let data = {
+            'user': -1
+          }
+          if(this.user.user_id > 0){
+            // console.log(this.users)
+            data = {
+              'user': this.users[this.user.user_id-1]
+            }
+          }
+
+          console.log(data)
+
+          axios.post(`http://127.0.0.1:8000/movies/recommend/`, data)
+            .then(response => {
+              console.log(response)
+            })
+            .catch(error => {
+              console.log(error)
+            })
+
         })
         .catch(error => {
           console.log(error)
